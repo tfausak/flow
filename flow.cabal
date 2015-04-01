@@ -18,6 +18,8 @@ source-repository head
     location: https://github.com/tfausak/flow
 
 library
+    exposed-modules:
+        Flow
     build-depends:
         base <5
     ghc-options: -Wall
