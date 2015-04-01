@@ -31,7 +31,9 @@ test-suite test
     build-depends:
         base -any,
         flow -any,
-        doctest ==0.9.*
+        doctest ==0.9.*,
+        QuickCheck ==2.*,
+        template-haskell ==2.*
     ghc-options: -Wall -Werror
 
 benchmark bench
