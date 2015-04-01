@@ -1,6 +1,16 @@
-module Flow where
+module Flow (
+    -- * Function application
+    apply, (|>), (<|),
+    -- * Function composition
+    compose, (.>), (<.),
+    -- * Strict function application
+    apply', (!>), (<!)
+) where
 
--- * Function application
+import Prelude (seq)
+
+-- $setup
+-- >>> import Prelude
 
 {- |
     >>> apply False not
@@ -25,8 +35,6 @@ infixr 0 <|
 (<|) :: (a -> b) -> a -> b
 f <| x = apply x f
 
--- * Function composition
-
 {- |
     >>> (compose not fromEnum) False
     1
@@ -49,3 +57,26 @@ f .> g = compose f g
 infixr 9 <.
 (<.) :: (b -> c) -> (a -> b) -> (a -> c)
 g <. f = compose f g
+
+{- |
+    >>> apply' undefined (const False)
+    *** Exception: Prelude.undefined
+-}
+apply' :: a -> (a -> b) -> b
+apply' x f = seq x (apply x f)
+
+{- |
+    >>> undefined !> const False
+    *** Exception: Prelude.undefined
+-}
+infixl 0 !>
+(!>) :: a -> (a -> b) -> b
+x !> f = apply' x f
+
+{- |
+    >>> const False <! undefined
+    *** Exception: Prelude.undefined
+-}
+infixr 0 <!
+(<!) :: (a -> b) -> a -> b
+f <! x = apply' x f

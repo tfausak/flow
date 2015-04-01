@@ -15,6 +15,11 @@ main = defaultMain
         , bench "f .> g" $ whnf (f .>) g
         , bench "g <. f" $ whnf (<. f) g
         ]
+    , bgroup "strict application"
+        [ bench "apply' x f" $ whnf (apply' x) f
+        , bench "x !> f" $ whnf (x !>) f
+        , bench "f <! x" $ whnf (<! x) f
+        ]
     ]
 
 x :: ()
