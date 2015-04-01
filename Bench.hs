@@ -10,6 +10,11 @@ main = defaultMain
         , bench "x |> f" $ whnf (x |>) f
         , bench "f <| x" $ whnf (<| x) f
         ]
+    , bgroup "composition"
+        [ bench "compose f g" $ whnf (compose f) g
+        , bench "f .> g" $ whnf (f .>) g
+        , bench "g <. f" $ whnf (<. f) g
+        ]
     ]
 
 x :: ()
@@ -17,3 +22,6 @@ x = ()
 
 f :: a -> a
 f = id
+
+g :: a -> a
+g = id
