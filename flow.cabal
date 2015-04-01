@@ -32,3 +32,12 @@ test-suite test
         flow -any,
         doctest ==0.9.*
     ghc-options: -Wall -Werror
+
+benchmark bench
+    type: exitcode-stdio-1.0
+    main-is: Bench.hs
+    build-depends:
+        base -any,
+        flow -any,
+        criterion ==1.*
+    ghc-options: -Wall -Werror
