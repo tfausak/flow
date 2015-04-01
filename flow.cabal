@@ -1,0 +1,23 @@
+name: flow
+version: 0.0.0
+cabal-version: >=1.6
+build-type: Simple
+license: MIT
+license-file: LICENSE.md
+maintainer: Taylor Fausak <taylor@fausak.me>
+synopsis: TODO
+description:
+    TODO
+category: TODO
+extra-source-files:
+    CHANGELOG.md
+    README.md
+
+source-repository head
+    type: git
+    location: https://github.com/tfausak/flow
+
+library
+    build-depends:
+        base <5
+    ghc-options: -Wall
