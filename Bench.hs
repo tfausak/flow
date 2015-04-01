@@ -25,11 +25,11 @@ main = defaultMain
         ]
     ]
 
-x :: ()
-x = ()
+x :: Int
+x = 1
 
-f :: a -> a
-f = id
+f :: Int -> Int
+f = (+ 2)
 
-g :: a -> a
-g = id
+g :: Int -> Int
+g = (* 3)
