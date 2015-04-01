@@ -5,10 +5,11 @@ build-type: Simple
 license: MIT
 license-file: LICENSE.md
 maintainer: Taylor Fausak <taylor@fausak.me>
-synopsis: TODO
+synopsis: Functions and operators for more understandable Haskell
 description:
-    TODO
-category: TODO
+    Flow provides functions and operators for writing more understandable
+    Haskell.
+category: Utility
 extra-source-files:
     CHANGELOG.md
     README.md

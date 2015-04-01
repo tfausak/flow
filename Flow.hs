@@ -1,3 +1,7 @@
+{- |
+    Flow provides functions and operators for writing more understandable
+    Haskell.
+-}
 module Flow (
     -- * Function application
     apply, (|>), (<|),
