@@ -28,14 +28,14 @@ To use Flow in a Cabal package, add it to your Cabal file.
 
 ```
 build-depends:
-    flow ==0.0.*
+    flow ==1.*
 ```
 
 For other use cases, install it with Cabal.
 
 ``` sh
 $ cabal update
-$ cabal install 'flow ==0.0.*'
+$ cabal install 'flow ==1.*'
 ```
 
 Flow uses [Semantic Versioning][]. Check out [the change log][] for a
