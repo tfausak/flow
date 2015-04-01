@@ -1,6 +1,6 @@
 name: flow
 version: 0.0.0
-cabal-version: >=1.6
+cabal-version: >=1.8
 build-type: Simple
 license: MIT
 license-file: LICENSE.md
@@ -23,3 +23,12 @@ library
     build-depends:
         base <5
     ghc-options: -Wall
+
+test-suite test
+    type: exitcode-stdio-1.0
+    main-is: Test.hs
+    build-depends:
+        base -any,
+        flow -any,
+        doctest ==0.9.*
+    ghc-options: -Wall -Werror
