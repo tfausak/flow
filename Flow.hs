@@ -21,7 +21,8 @@ import Prelude (seq)
 {- $setup
     >>> import Prelude
     >>> let f = (+ 2)
-    >>> let g = (* 3)
+    >>> let g = (* 2)
+    >>> let h = (^ 2)
 -}
 
 {- |
@@ -51,6 +52,7 @@ apply x f = f x
 
 {- |
     prop> (x |> f) == f x
+    prop> (x |> f |> g) == g (f x)
 
     Left-associative 'apply' operator. This is like a flipped version of the
     'Prelude.$' operator. Read it as "apply forward" or "pipe into".
@@ -76,6 +78,7 @@ x |> f = apply x f
 
 {- |
     prop> (f <| x) == f x
+    prop> (g <| f <| x) == g (f x)
 
     Right-associative 'apply' operator. This is like the 'Prelude.$' operator.
     Read it as "apply backward" or "pipe from".
@@ -119,6 +122,7 @@ compose f g = \ x -> g (f x)
 
 {- |
     prop> (f .> g) x == g (f x)
+    prop> (f .> g .> h) x == h (g (f x))
 
     Left-associative 'compose' operator. This is like a flipped version of the
     'Prelude..' operator. Read it as "compose forward" or "and then".
@@ -137,6 +141,7 @@ f .> g = compose f g
 
 {- |
     prop> (g <. f) x == g (f x)
+    prop> (h <. g <. f) x == h (g (f x))
 
     Right-associative 'compose' operator. This is like the 'Prelude..'
     operator. Read it as "compose backward" or "but first".
@@ -166,6 +171,7 @@ apply' x f = seq x (apply x f)
 
 {- |
     prop> (x !> f) == seq x (f x)
+    prop> (x !> f !> g) == seq x (g (seq x (f x)))
 
     Left-associative 'apply'' operator. This is like a flipped version of the
     'Prelude.$!' operator.
@@ -179,6 +185,7 @@ x !> f = apply' x f
 
 {- |
     prop> (f <! x) == seq x (f x)
+    prop> (g <! f <! x) == seq x (g (seq x (f x)))
 
     Right-associative 'apply'' operator. This is like the 'Prelude.$!'
     operator.
