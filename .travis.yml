@@ -9,5 +9,5 @@ script:
 - cabal build
 - cabal test
 after_script:
-- cabal install hpc-coveralls
+- cabal install --force-reinstalls hpc-coveralls
 - hpc-coveralls test
