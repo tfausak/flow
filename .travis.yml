@@ -1,6 +1,13 @@
+language: haskell
 ghc:
 - '7.8'
 - '7.6'
 - '7.4'
 - '7.0'
-language: haskell
+script:
+- cabal configure --enable-library-coverage --enable-tests
+- cabal build
+- cabal test
+after_script:
+- cabal install hpc-coveralls
+- hpc-coveralls test
