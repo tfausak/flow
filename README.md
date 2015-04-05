@@ -9,9 +9,9 @@
 </p>
 
 <p align="center">
-    <a href="https://hackage.haskell.org/package/flow"><img alt="" src="https://img.shields.io/hackage/v/flow.svg"></a>
-    <a href="https://travis-ci.org/tfausak/flow"><img alt="" src="https://img.shields.io/travis/tfausak/flow/master.svg"></a>
-    <a href="http://packdeps.haskellers.com/feed?needle=flow"><img alt="" src="https://img.shields.io/hackage-deps/v/flow.svg"></a>
+    <a href="https://hackage.haskell.org/package/flow"><img alt="" src="https://img.shields.io/hackage/v/flow.svg?label=version&style=flat-square"></a>
+    <a href="https://travis-ci.org/tfausak/flow"><img alt="" src="https://img.shields.io/travis/tfausak/flow/master.svg?label=build&style=flat-square"></a>
+    <a href="http://packdeps.haskellers.com/feed?needle=flow"><img alt="" src="https://img.shields.io/hackage-deps/v/flow.svg?label=dependencies&style=flat-square"></a>
 </p>
 
 <hr>
