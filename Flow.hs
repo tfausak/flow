@@ -13,7 +13,7 @@ module Flow (
     -- * Function composition
     compose, (.>), (<.),
     -- * Strict function application
-    apply', (!>), (<!)
+    apply', (!>), (<!),
 ) where
 
 import Prelude (seq)
