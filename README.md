@@ -1,3 +1,7 @@
+<p align="center">
+    <img alt="" src="https://a.pomf.se/gnowsh.svg">
+</p>
+
 <h1 align="center">
     <a href="https://github.com/tfausak/flow">
         Flow
