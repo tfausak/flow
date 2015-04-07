@@ -20,64 +20,110 @@
 
     <section class="main-content">
       <p align="center">
-    <a href="https://hackage.haskell.org/package/flow"><img alt="" src="https://img.shields.io/hackage/v/flow.svg"></a>
-    <a href="https://travis-ci.org/tfausak/flow"><img alt="" src="https://img.shields.io/travis/tfausak/flow/master.svg"></a>
-    <a href="http://packdeps.haskellers.com/feed?needle=flow"><img alt="" src="https://img.shields.io/hackage-deps/v/flow.svg"></a>
+    <img alt="" src="https://a.pomf.se/gnowsh.svg">
 </p>
 
+<p align="center">
+    <a href="https://hackage.haskell.org/package/flow"><img alt="" src="https://img.shields.io/hackage/v/flow.svg?label=version&amp;style=flat-square"></a>
+    <a href="https://travis-ci.org/tfausak/flow"><img alt="" src="https://img.shields.io/travis/tfausak/flow/master.svg?label=build&amp;style=flat-square"></a>
+    <a href="http://packdeps.haskellers.com/feed?needle=flow"><img alt="" src="https://img.shields.io/hackage-deps/v/flow.svg?label=dependencies&amp;style=flat-square"></a>
+</p>
+
+<hr>
+
+<p>Flow is a package that provides functions and operators for writing more
+understandable Haskell. It's an alternative to some common idioms like function
+application with <a href="http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:-36-"><code>($)</code></a> and function composition with <a href="http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:."><code>(.)</code></a>.</p>
+
 <ul>
-<li>  <a href="#install">Install</a>
+<li>  <a href="#requirements">Requirements</a>
 </li>
-<li>  <a href="#use">Use</a>
+<li>  <a href="#installation">Installation</a>
 </li>
-<li>  <a href="#develop">Develop</a>
+<li>  <a href="#usage">Usage</a>
 </li>
 </ul>
 
 <h2>
-<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
 
-<p>To use Flow in a Cabal package, add it to your Cabal file.</p>
+<p>Flow requires a Haskell compiler. It is tested with recent versions of GHC, but
+older or different compilers should be acceptable. For installation with Cabal,
+Flow requires at least Cabal 1.8.</p>
 
-<pre><code>build-depends:
-    flow ==1.*
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>To add Flow as a dependency to your package, add it to your Cabal file.</p>
+
+<pre><code>build-depends: flow ==1.*
 </code></pre>
 
 <p>For other use cases, install it with Cabal.</p>
 
-<div class="highlight highlight-sh"><pre>$ cabal update
-$ cabal install <span class="pl-s"><span class="pl-pds">'</span>flow ==1.*<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-sh"><pre>$ cabal install <span class="pl-s"><span class="pl-pds">'</span>flow ==1.*<span class="pl-pds">'</span></span></pre></div>
 
-<p>Flow uses <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>. Check out <a href="CHANGELOG.md">the change log</a> for a
-detailed list of changes.</p>
+<p>Flow uses <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>. See <a href="CHANGELOG.md">the change log</a> for a detailed list
+of changes.</p>
 
 <h2>
-<a id="use" class="anchor" href="#use" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use</h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<p>Flow is designed to be imported unqualified. It does not export anything
-that conflicts with the Prelude. To get started, simply import it.</p>
+<p>Flow is designed to be imported unqualified. It does not export anything that
+conflicts with <a href="http://hackage.haskell.org/package/base">the base package</a>.</p>
 
 <div class="highlight highlight-hs"><pre><span class="pl-k">import</span> <span class="pl-c1">Flow</span></pre></div>
 
-<p>Check out <a href="https://hackage.haskell.org/package/flow">the Haddock documentation</a> for more information about the
-functions Flow provides.</p>
+<p>Here is a quick overview of the functions and operators that Flow provides.</p>
 
-<h2>
-<a id="develop" class="anchor" href="#develop" aria-hidden="true"><span class="octicon octicon-link"></span></a>Develop</h2>
+<table>
+<thead>
+<tr>
+<th>Base</th>
+<th>Flow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>f x</code></td>
+<td><code>apply x f</code></td>
+</tr>
+<tr>
+<td><code>x &amp; f</code></td>
+<td><code>x |&gt; f</code></td>
+</tr>
+<tr>
+<td><code>f $ x</code></td>
+<td><code>f &lt;| x</code></td>
+</tr>
+<tr>
+<td><code>g (f x)</code></td>
+<td><code>compose f g x</code></td>
+</tr>
+<tr>
+<td><code>g &gt;&gt;&gt; f</code></td>
+<td><code>f .&gt; g</code></td>
+</tr>
+<tr>
+<td><code>g . f</code></td>
+<td><code>g &lt;. f</code></td>
+</tr>
+<tr>
+<td><code>seq x (f x)</code></td>
+<td><code>apply' x f</code></td>
+</tr>
+<tr>
+<td><code>f $! x</code></td>
+<td><code>x !&gt; f</code></td>
+</tr>
+<tr>
+<td><code>f $! x</code></td>
+<td><code>f &lt;! x</code></td>
+</tr>
+</tbody>
+</table>
 
-<p>If you want to help develop Flow, you'll need Git, GHC, and Cabal. To get
-started, clone the repository and install the dependencies.</p>
-
-<div class="highlight highlight-sh"><pre>$ git clone https://github.com/tfausak/flow
-$ <span class="pl-c1">cd</span> flow
-
-$ cabal sandbox init
-$ cabal install --enable-benchmarks --enable-tests --only-dependencies</pre></div>
-
-<p>Once you've done that, you should be able to use the normal Cabal tools
-(<code>repl</code>, <code>test</code>, <code>haddock</code>, and <code>bench</code> in particular). If you've made changes
-that you want merged into this repository, create a fork and open a pull
-request. GitHub's <a href="https://help.github.com/articles/fork-a-repo/">Fork A Repo</a> article can help with that.</p>
+<p>For more information about Flow, please read <a href="https://hackage.haskell.org/package/flow/docs/Flow.html">the Haddock documentation</a>.</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/tfausak/flow">Flow</a> is maintained by <a href="https://github.com/tfausak">tfausak</a>.</span>
