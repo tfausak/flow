@@ -6,7 +6,6 @@ license: MIT
 license-file: LICENSE.md
 copyright: 2015 Taylor Fausak <taylor@fausak.me>
 maintainer: Taylor Fausak <taylor@fausak.me>
-stability: Stable
 homepage: http://taylor.fausak.me/flow/
 bug-reports: https://github.com/tfausak/flow/issues
 synopsis: Write more understandable Haskell.
