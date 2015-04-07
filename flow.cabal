@@ -4,12 +4,21 @@ cabal-version: >=1.8
 build-type: Simple
 license: MIT
 license-file: LICENSE.md
+copyright: 2015 Taylor Fausak <taylor@fausak.me>
 maintainer: Taylor Fausak <taylor@fausak.me>
-synopsis: Functions and operators for more understandable Haskell
+stability: Stable
+homepage: http://taylor.fausak.me/flow/
+bug-reports: https://github.com/tfausak/flow/issues
+synopsis: Write more understandable Haskell.
 description:
-    Flow provides functions and operators for writing more understandable
-    Haskell.
-category: Utility
+    Flow is a package that provides functions and operators for writing more
+    understandable Haskell. It's an alternative to some common idioms like
+    function application with @($)@ and function composition with @(.)@.
+    .
+    For more information, please read
+    <https://github.com/tfausak/flow/blob/master/README.md the readme>.
+category: Combinators, Functions, Utility
+author: Taylor Fausak <taylor@fausak.me>
 extra-source-files:
     CHANGELOG.md
     README.md
