@@ -15,8 +15,8 @@ description:
     understandable Haskell. It's an alternative to some common idioms like
     function application with @($)@ and function composition with @(.)@.
     .
-    For more information, please read
-    <https://github.com/tfausak/flow/blob/master/README.md the readme>.
+    For more information, please visit
+    <http://taylor.fausak.me/flow/ its official site>.
 category: Combinators, Functions, Utility
 author: Taylor Fausak <taylor@fausak.me>
 extra-source-files:

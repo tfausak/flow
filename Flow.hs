@@ -1,11 +1,16 @@
 {- |
-    Flow provides functions and operators for writing more understandable
-    Haskell.
+    Flow is a package that provides functions and operators for writing more
+    understandable Haskell. It's an alternative to some common idioms like
+    function application with @($)@ and function composition with @(.)@.
 
-    Flow does not export anything that conflicts with the "Prelude". The
-    recommended way to use Flow is to import it unqualified.
+    Flow is designed to be imported unqualified. It does not export anything
+    that conflicts with
+    <http://hackage.haskell.org/package/base the base package>.
 
     >>> import Flow
+
+    For more information about Flow, please visit
+    <http://taylor.fausak.me/flow/ its official site>.
 -}
 module Flow (
     -- * Function application

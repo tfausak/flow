@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">
-    <a href="https://github.com/tfausak/flow">
+    <a href="http://taylor.fausak.me/flow/">
         Flow
     </a>
 </h1>
