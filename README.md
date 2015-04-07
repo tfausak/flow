@@ -9,7 +9,7 @@
 </h1>
 
 <p align="center">
-    Functions and operators for more understandable Haskell
+    Write more understandable Haskell.
 </p>
 
 <p align="center">
@@ -20,62 +20,65 @@
 
 <hr>
 
-Flow provides functions and operators for writing more understandable Haskell.
+Flow is a package that provides functions and operators for writing more
+understandable Haskell. It's an alternative to some common idioms like function
+application with [`($)`][] and function composition with [`(.)`][].
 
--   [Install](#install)
--   [Use](#use)
--   [Develop](#develop)
+-   [Requirements](#requirements)
+-   [Installation](#installation)
+-   [Usage](#usage)
 
-## Install
+## Requirements
 
-To use Flow in a Cabal package, add it to your Cabal file.
+Flow requires a Haskell compiler. It is tested with recent versions of GHC, but
+older or different compilers should be acceptable. For installation with Cabal,
+Flow requires at least Cabal 1.8.
+
+## Installation
+
+To add Flow as a dependency to your package, add it to your Cabal file.
 
 ```
-build-depends:
-    flow ==1.*
+build-depends: flow ==1.*
 ```
 
 For other use cases, install it with Cabal.
 
 ``` sh
-$ cabal update
 $ cabal install 'flow ==1.*'
 ```
 
-Flow uses [Semantic Versioning][]. Check out [the change log][] for a
-detailed list of changes.
+Flow uses [Semantic Versioning][]. See [the change log][] for a detailed list
+of changes.
 
-## Use
+## Usage
 
-Flow is designed to be imported unqualified. It does not export anything
-that conflicts with the Prelude. To get started, simply import it.
+Flow is designed to be imported unqualified. It does not export anything that
+conflicts with [the base package][].
 
 ``` hs
 import Flow
 ```
 
-Check out [the Haddock documentation][] for more information about the
-functions Flow provides.
+Here is a quick overview of the functions and operators that Flow provides.
 
-## Develop
+Base          | Flow
+------------- | ---------------
+`f x`         | `apply x f`
+`x & f`       | `x |> f`
+`f $ x`       | `f <| x`
+`g (f x)`     | `compose f g x`
+`g >>> f`     | `f .> g`
+`g . f`       | `g <. f`
+`seq x (f x)` | `apply' x f`
+`f $! x`      | `x !> f`
+`f $! x`      | `f <! x`
 
-If you want to help develop Flow, you'll need Git, GHC, and Cabal. To get
-started, clone the repository and install the dependencies.
+For more information about Flow, please read [the Haddock documentation][].
 
-``` sh
-$ git clone https://github.com/tfausak/flow
-$ cd flow
-
-$ cabal sandbox init
-$ cabal install --enable-benchmarks --enable-tests --only-dependencies
-```
-
-Once you've done that, you should be able to use the normal Cabal tools
-(`repl`, `test`, `haddock`, and `bench` in particular). If you've made changes
-that you want merged into this repository, create a fork and open a pull
-request. GitHub's [Fork A Repo][] article can help with that.
-
+[`($)`]: http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:-36-
+[`(.)`]: http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:.
 [semantic versioning]: http://semver.org/spec/v2.0.0.html
 [the change log]: CHANGELOG.md
-[the haddock documentation]: https://hackage.haskell.org/package/flow
-[fork a repo]: https://help.github.com/articles/fork-a-repo/
+[the base package]: http://hackage.haskell.org/package/base
+[the haddock documentation]: https://hackage.haskell.org/package/flow/docs/Flow.html
