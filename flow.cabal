@@ -35,7 +35,7 @@ library
 
 test-suite test
     type: exitcode-stdio-1.0
-    main-is: Test.hs
+    main-is: FlowTest.hs
     build-depends:
         base -any,
         flow -any,
