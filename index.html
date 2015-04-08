@@ -79,46 +79,46 @@ conflicts with <a href="http://hackage.haskell.org/package/base">the base packag
 <table>
 <thead>
 <tr>
-<th>Base</th>
 <th>Flow</th>
+<th>Base</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>f x</code></td>
 <td><code>apply x f</code></td>
+<td><code>f x</code></td>
 </tr>
 <tr>
-<td><code>x &amp; f</code></td>
 <td><code>x |&gt; f</code></td>
+<td><code>x &amp; f</code></td>
 </tr>
 <tr>
-<td><code>f $ x</code></td>
 <td><code>f &lt;| x</code></td>
+<td><code>f $ x</code></td>
 </tr>
 <tr>
-<td><code>g (f x)</code></td>
 <td><code>compose f g x</code></td>
+<td><code>g (f x)</code></td>
 </tr>
 <tr>
-<td><code>g &gt;&gt;&gt; f</code></td>
 <td><code>f .&gt; g</code></td>
+<td><code>f &gt;&gt;&gt; g</code></td>
 </tr>
 <tr>
-<td><code>g . f</code></td>
 <td><code>g &lt;. f</code></td>
+<td><code>f . g</code></td>
 </tr>
 <tr>
-<td><code>seq x (f x)</code></td>
 <td><code>apply' x f</code></td>
+<td><code>seq x (f x)</code></td>
 </tr>
 <tr>
-<td><code>f $! x</code></td>
 <td><code>x !&gt; f</code></td>
+<td>-</td>
 </tr>
 <tr>
-<td><code>f $! x</code></td>
 <td><code>f &lt;! x</code></td>
+<td><code>f $! x</code></td>
 </tr>
 </tbody>
 </table>
