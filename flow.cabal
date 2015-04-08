@@ -46,7 +46,7 @@ test-suite test
 
 benchmark bench
     type: exitcode-stdio-1.0
-    main-is: Bench.hs
+    main-is: FlowBench.hs
     build-depends:
         base -any,
         flow -any,
