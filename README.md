@@ -62,17 +62,17 @@ import Flow
 
 Here is a quick overview of the functions and operators that Flow provides.
 
-Base          | Flow
-------------- | ---------------
-`f x`         | `apply x f`
-`x & f`       | `x |> f`
-`f $ x`       | `f <| x`
-`g (f x)`     | `compose f g x`
-`g >>> f`     | `f .> g`
-`g . f`       | `g <. f`
-`seq x (f x)` | `apply' x f`
-`f $! x`      | `x !> f`
-`f $! x`      | `f <! x`
+Flow            | Base
+--------------- | -------------
+`apply x f`     | `f x`
+`x |> f`        | `x & f`
+`f <| x`        | `f $ x`
+`compose f g x` | `g (f x)`
+`f .> g`        | `f >>> g`
+`g <. f`        | `f . g`
+`apply' x f`    | `seq x (f x)`
+`x !> f`        | -
+`f <! x`        | `f $! x`
 
 For more information about Flow, please read [the Haddock documentation][].
 
