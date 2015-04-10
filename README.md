@@ -69,7 +69,7 @@ Flow            | Base
 `f <| x`        | `f $ x`
 `compose f g x` | `g (f x)`
 `f .> g`        | `f >>> g`
-`g <. f`        | `f . g`
+`g <. f`        | `g . f`
 `apply' x f`    | `seq x (f x)`
 `x !> f`        | -
 `f <! x`        | `f $! x`
