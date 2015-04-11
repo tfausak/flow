@@ -77,7 +77,7 @@ apply x f = f x
     >>> map (False |>) [not, id]
     [True,False]
 -}
-infixl 0 |>
+infixl 1 |>
 (|>) :: a -> (a -> b) -> b
 x |> f = apply x f
 
@@ -184,7 +184,7 @@ apply' x f = seq x (apply x f)
     >>> undefined !> const False
     *** Exception: Prelude.undefined
 -}
-infixl 0 !>
+infixl 1 !>
 (!>) :: a -> (a -> b) -> b
 x !> f = apply' x f
 
