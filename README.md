@@ -1,28 +1,16 @@
-<p align="center">
-    <img alt="" src="https://a.pomf.se/gnowsh.svg">
-</p>
+# [Flow][]
 
-<h1 align="center">
-    <a href="http://taylor.fausak.me/flow/">
-        Flow
-    </a>
-</h1>
+Write more understandable Haskell.
 
-<p align="center">
-    Write more understandable Haskell.
-</p>
+[![Version][]](https://hackage.haskell.org/package/flow)
+[![Build][]](https://travis-ci.org/tfausak/flow)
+[![Dependencies][]](http://packdeps.haskellers.com/feed?needle=flow)
 
-<p align="center">
-    <a href="https://hackage.haskell.org/package/flow"><img alt="Version" src="https://img.shields.io/hackage/v/flow.svg?label=version&style=flat-square"></a>
-    <a href="https://travis-ci.org/tfausak/flow"><img alt="Build" src="https://img.shields.io/travis/tfausak/flow/master.svg?label=build&style=flat-square"></a>
-    <a href="http://packdeps.haskellers.com/feed?needle=flow"><img alt="Dependencies" src="https://img.shields.io/hackage-deps/v/flow.svg?label=dependencies&style=flat-square"></a>
-</p>
-
-<hr>
+---
 
 Flow is a package that provides functions and operators for writing more
-understandable Haskell. It's an alternative to some common idioms like function
-application with [`($)`][] and function composition with [`(.)`][].
+understandable Haskell. It's an alternative to some common idioms like
+[`($)`][] for function application and [`(.)`][] for function composition.
 
 -   [Requirements](#requirements)
 -   [Installation](#installation)
@@ -39,13 +27,13 @@ Flow requires at least Cabal 1.8.
 To add Flow as a dependency to your package, add it to your Cabal file.
 
 ```
-build-depends: flow ==1.*
+build-depends: flow ==1.0.*
 ```
 
 For other use cases, install it with Cabal.
 
 ``` sh
-$ cabal install 'flow ==1.*'
+$ cabal install 'flow ==1.0.*'
 ```
 
 Flow uses [Semantic Versioning][]. See [the change log][] for a detailed list
@@ -76,6 +64,10 @@ Flow            | Base
 
 For more information about Flow, please read [the Haddock documentation][].
 
+[flow]: http://taylor.fausak.me/flow/
+[version]: https://img.shields.io/hackage/v/flow.svg?label=version&style=flat-square
+[build]: https://img.shields.io/travis/tfausak/flow/master.svg?label=build&style=flat-square
+[dependencies]: https://img.shields.io/hackage-deps/v/flow.svg?label=dependencies&style=flat-square
 [`($)`]: http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:-36-
 [`(.)`]: http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:.
 [semantic versioning]: http://semver.org/spec/v2.0.0.html
