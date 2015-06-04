@@ -2,6 +2,11 @@
 
 Flow uses [Semantic Versioning][].
 
+## v1.0.1 (2015-06-04)
+
+-   Updated documentation.
+-   Supported doctest 0.10.
+
 ## v1.0.0 (2015-04-01)
 
 -   Initially released.
