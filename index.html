@@ -19,21 +19,15 @@
     </section>
 
     <section class="main-content">
-      <p align="center">
-    <img alt="" src="https://a.pomf.se/gnowsh.svg">
-</p>
-
-<p align="center">
-    <a href="https://hackage.haskell.org/package/flow"><img alt="" src="https://img.shields.io/hackage/v/flow.svg?label=version&amp;style=flat-square"></a>
-    <a href="https://travis-ci.org/tfausak/flow"><img alt="" src="https://img.shields.io/travis/tfausak/flow/master.svg?label=build&amp;style=flat-square"></a>
-    <a href="http://packdeps.haskellers.com/feed?needle=flow"><img alt="" src="https://img.shields.io/hackage-deps/v/flow.svg?label=dependencies&amp;style=flat-square"></a>
-</p>
+      <p><a href="https://hackage.haskell.org/package/flow"><img src="https://img.shields.io/hackage/v/flow.svg?label=version&amp;style=flat-square" alt="Version"></a>
+<a href="https://travis-ci.org/tfausak/flow"><img src="https://img.shields.io/travis/tfausak/flow/master.svg?label=build&amp;style=flat-square" alt="Build"></a>
+<a href="http://packdeps.haskellers.com/feed?needle=flow"><img src="https://img.shields.io/hackage-deps/v/flow.svg?label=dependencies&amp;style=flat-square" alt="Dependencies"></a></p>
 
 <hr>
 
 <p>Flow is a package that provides functions and operators for writing more
-understandable Haskell. It's an alternative to some common idioms like function
-application with <a href="http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:-36-"><code>($)</code></a> and function composition with <a href="http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:."><code>(.)</code></a>.</p>
+understandable Haskell. It's an alternative to some common idioms like
+<a href="http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:-36-"><code>($)</code></a> for function application and <a href="http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:."><code>(.)</code></a> for function composition.</p>
 
 <ul>
 <li>  <a href="#requirements">Requirements</a>
@@ -56,12 +50,12 @@ Flow requires at least Cabal 1.8.</p>
 
 <p>To add Flow as a dependency to your package, add it to your Cabal file.</p>
 
-<pre><code>build-depends: flow ==1.*
+<pre><code>build-depends: flow ==1.0.*
 </code></pre>
 
 <p>For other use cases, install it with Cabal.</p>
 
-<div class="highlight highlight-sh"><pre>$ cabal install <span class="pl-s"><span class="pl-pds">'</span>flow ==1.*<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-sh"><pre>$ cabal install <span class="pl-s"><span class="pl-pds">'</span>flow ==1.0.*<span class="pl-pds">'</span></span></pre></div>
 
 <p>Flow uses <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>. See <a href="CHANGELOG.md">the change log</a> for a detailed list
 of changes.</p>
