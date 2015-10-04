@@ -8,7 +8,7 @@ copyright: 2015 Taylor Fausak <taylor@fausak.me>
 maintainer: Taylor Fausak <taylor@fausak.me>
 homepage: http://taylor.fausak.me/flow/
 bug-reports: https://github.com/tfausak/flow/issues
-synopsis: TODO
+synopsis: Write more understandable Haskell.
 description:
     TODO
 category: Combinators, Functions, Utility

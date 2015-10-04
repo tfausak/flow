@@ -19,7 +19,10 @@ import Prelude (seq)
 -}
 
 {- |
+    Left-associative 'apply'.
+
     prop> (x |> f) == f x
+
     prop> (x |> f |> g) == g (f x)
 -}
 infixl 0 |>
@@ -27,7 +30,10 @@ infixl 0 |>
 x |> f = apply x f
 
 {- |
+    Right-associative 'apply'.
+
     prop> (f <| x) == f x
+
     prop> (g <| f <| x) == g (f x)
 -}
 infixr 0 <|
@@ -35,13 +41,18 @@ infixr 0 <|
 f <| x = apply x f
 
 {- |
+    Function application.
+
     prop> apply x f == f x
 -}
 apply :: a -> (a -> b) -> b
 apply x f = f x
 
 {- |
+    Left-associative 'compose'.
+
     prop> (f .> g) x == g (f x)
+
     prop> (f .> g .> h) x == h (g (f x))
 -}
 infixl 9 .>
@@ -49,7 +60,10 @@ infixl 9 .>
 f .> g = compose f g
 
 {- |
+    Right-associative 'compose'.
+
     prop> (g <. f) x == g (f x)
+
     prop> (h <. g <. f) x == h (g (f x))
 -}
 infixr 9 <.
@@ -57,13 +71,18 @@ infixr 9 <.
 g <. f = compose f g
 
 {- |
+    Function composition.
+
     prop> compose f g x == g (f x)
 -}
 compose :: (a -> b) -> (b -> c) -> (a -> c)
 compose f g = \ x -> g (f x)
 
 {- |
+    Left-associative 'apply''.
+
     prop> (x !> f) == seq x (f x)
+
     prop> (x !> f !> g) == seq x (g (seq x (f x)))
 -}
 infixl 0 !>
@@ -71,7 +90,10 @@ infixl 0 !>
 x !> f = apply' x f
 
 {- |
+    Right-associative 'apply''.
+
     prop> (f <! x) == seq x (f x)
+
     prop> (g <! f <! x) == seq x (g (seq x (f x)))
 -}
 infixr 0 <!
@@ -79,6 +101,8 @@ infixr 0 <!
 f <! x = apply' x f
 
 {- |
+    Strict function application.
+
     prop> apply' x f == seq x (f x)
 -}
 apply' :: a -> (a -> b) -> b
