@@ -1,5 +1,5 @@
 name: flow
-version: 1.0.1
+version: 1.0.2
 cabal-version: >=1.8
 build-type: Simple
 license: MIT
