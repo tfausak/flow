@@ -10,7 +10,9 @@ homepage: http://taylor.fausak.me/flow/
 bug-reports: https://github.com/tfausak/flow/issues
 synopsis: Write more understandable Haskell.
 description:
-    TODO
+    Flow provides operators for writing more understandable Haskell. It is an
+    alternative to some common idioms like (@$@) for function application and
+    (@.@) for function composition.
 category: Combinators, Functions, Utility
 author: Taylor Fausak <taylor@fausak.me>
 extra-source-files:
