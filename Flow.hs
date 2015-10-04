@@ -83,7 +83,7 @@ compose f g = \ x -> g (f x)
 
     prop> (x !> f) == seq x (f x)
 
-    prop> (x !> f !> g) == seq x (g (seq x (f x)))
+    prop> (x !> f !> g) == let y = seq x (f x) in seq y (g y)
 -}
 infixl 0 !>
 (!>) :: a -> (a -> b) -> b
@@ -94,7 +94,7 @@ x !> f = apply' x f
 
     prop> (f <! x) == seq x (f x)
 
-    prop> (g <! f <! x) == seq x (g (seq x (f x)))
+    prop> (g <! f <! x) == let y = seq x (f x) in seq y (g y)
 -}
 infixr 0 <!
 (<!) :: (a -> b) -> a -> b
