@@ -51,4 +51,6 @@ benchmark bench
         base -any,
         flow -any,
         criterion ==1.*
+    other-modules:
+        Flow
     ghc-options: -Wall -Werror
