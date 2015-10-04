@@ -8,14 +8,9 @@ copyright: 2015 Taylor Fausak <taylor@fausak.me>
 maintainer: Taylor Fausak <taylor@fausak.me>
 homepage: http://taylor.fausak.me/flow/
 bug-reports: https://github.com/tfausak/flow/issues
-synopsis: Write more understandable Haskell.
+synopsis: TODO
 description:
-    Flow is a package that provides functions and operators for writing more
-    understandable Haskell. It's an alternative to some common idioms like
-    @($)@ for function application and @(.)@ for function composition.
-    .
-    For more information, please visit
-    <http://taylor.fausak.me/flow/ the official site>.
+    TODO
 category: Combinators, Functions, Utility
 author: Taylor Fausak <taylor@fausak.me>
 extra-source-files:
