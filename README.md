@@ -9,12 +9,13 @@ Write more understandable Haskell.
 ---
 
 Flow is a package that provides functions and operators for writing more
-understandable Haskell. It's an alternative to some common idioms like
+understandable Haskell. It is an alternative to some common idioms like
 [`($)`][] for function application and [`(.)`][] for function composition.
 
 -   [Requirements](#requirements)
 -   [Installation](#installation)
 -   [Usage](#usage)
+    -   [Cheat sheet](#cheat-sheet)
 
 ## Requirements
 
@@ -30,12 +31,6 @@ To add Flow as a dependency to your package, add it to your Cabal file.
 build-depends: flow ==1.0.*
 ```
 
-For other use cases, install it with Cabal.
-
-``` sh
-$ cabal install 'flow ==1.0.*'
-```
-
 See [the change log][] for a detailed list of changes.
 
 ## Usage
@@ -47,19 +42,19 @@ conflicts with [the base package][].
 import Flow
 ```
 
-Here is a quick overview of the functions and operators that Flow provides.
+### Cheat sheet
 
 Flow            | Base
 --------------- | -------------
-`apply x f`     | `f x`
 `x |> f`        | `x & f`
 `f <| x`        | `f $ x`
-`compose f g x` | `g (f x)`
+`apply x f`     | `f x`
 `f .> g`        | `f >>> g`
 `g <. f`        | `g . f`
-`apply' x f`    | `seq x (f x)`
+`compose f g x` | `g (f x)`
 `x !> f`        | -
 `f <! x`        | `f $! x`
+`apply' x f`    | `seq x (f x)`
 
 For more information about Flow, please read [the Haddock documentation][].
 
