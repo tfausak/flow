@@ -144,17 +144,8 @@ f .> g = compose f g
     -0.25
 
     Or use it anywhere you would use ('Prelude..').
-
-    Note that this operator's precedence is lower than ('.>'), so they can be
-    used together.
-
-    -- ((1 + 2) * 3) ^ 4
-    >>> ((^ 4) <. (+ 2) .> (* 3)) 1
-    6561
-    >>> ((* 3) .> (^ 4) <. (+ 2)) 1
-    6561
 -}
-infixr 8 <.
+infixr 9 <.
 (<.) :: (b -> c) -> (a -> b) -> (a -> c)
 g <. f = compose f g
 
