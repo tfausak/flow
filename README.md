@@ -36,8 +36,7 @@ For other use cases, install it with Cabal.
 $ cabal install 'flow ==1.0.*'
 ```
 
-Flow uses [Semantic Versioning][]. See [the change log][] for a detailed list
-of changes.
+See [the change log][] for a detailed list of changes.
 
 ## Usage
 
@@ -70,7 +69,6 @@ For more information about Flow, please read [the Haddock documentation][].
 [dependencies]: https://img.shields.io/hackage-deps/v/flow.svg?label=dependencies
 [`($)`]: http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:-36-
 [`(.)`]: http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:.
-[semantic versioning]: http://semver.org/spec/v2.0.0.html
 [the change log]: CHANGELOG.md
 [the base package]: http://hackage.haskell.org/package/base
 [the haddock documentation]: https://hackage.haskell.org/package/flow/docs/Flow.html
