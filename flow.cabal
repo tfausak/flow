@@ -39,7 +39,7 @@ test-suite test
     build-depends:
         base -any,
         flow -any,
-        doctest >= 0.9 && <0.11,
+        doctest >=0.9 && <0.11,
         QuickCheck ==2.*,
         template-haskell ==2.*
     ghc-options: -Wall -Werror
