@@ -5,7 +5,7 @@
     <title>Flow by tfausak</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
@@ -19,14 +19,14 @@
     </section>
 
     <section class="main-content">
-      <p><a href="https://hackage.haskell.org/package/flow"><img src="https://img.shields.io/hackage/v/flow.svg?label=version&amp;style=flat-square" alt="Version"></a>
-<a href="https://travis-ci.org/tfausak/flow"><img src="https://img.shields.io/travis/tfausak/flow/master.svg?label=build&amp;style=flat-square" alt="Build"></a>
-<a href="http://packdeps.haskellers.com/feed?needle=flow"><img src="https://img.shields.io/hackage-deps/v/flow.svg?label=dependencies&amp;style=flat-square" alt="Dependencies"></a></p>
+      <p><a href="https://hackage.haskell.org/package/flow"><img src="https://img.shields.io/hackage/v/flow.svg?label=version" alt="Version"></a>
+<a href="https://travis-ci.org/tfausak/flow"><img src="https://img.shields.io/travis/tfausak/flow/master.svg?label=build" alt="Build"></a>
+<a href="http://packdeps.haskellers.com/feed?needle=flow"><img src="https://img.shields.io/hackage-deps/v/flow.svg?label=dependencies" alt="Dependencies"></a></p>
 
 <hr>
 
 <p>Flow is a package that provides functions and operators for writing more
-understandable Haskell. It's an alternative to some common idioms like
+understandable Haskell. It is an alternative to some common idioms like
 <a href="http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:-36-"><code>($)</code></a> for function application and <a href="http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:."><code>(.)</code></a> for function composition.</p>
 
 <ul>
@@ -35,6 +35,11 @@ understandable Haskell. It's an alternative to some common idioms like
 <li>  <a href="#installation">Installation</a>
 </li>
 <li>  <a href="#usage">Usage</a>
+
+<ul>
+<li>  <a href="#cheat-sheet">Cheat sheet</a>
+</li>
+</ul>
 </li>
 </ul>
 
@@ -53,12 +58,7 @@ Flow requires at least Cabal 1.8.</p>
 <pre><code>build-depends: flow ==1.0.*
 </code></pre>
 
-<p>For other use cases, install it with Cabal.</p>
-
-<div class="highlight highlight-sh"><pre>$ cabal install <span class="pl-s"><span class="pl-pds">'</span>flow ==1.0.*<span class="pl-pds">'</span></span></pre></div>
-
-<p>Flow uses <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>. See <a href="CHANGELOG.md">the change log</a> for a detailed list
-of changes.</p>
+<p>See <a href="CHANGELOG.md">the change log</a> for a detailed list of changes.</p>
 
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
@@ -66,9 +66,10 @@ of changes.</p>
 <p>Flow is designed to be imported unqualified. It does not export anything that
 conflicts with <a href="http://hackage.haskell.org/package/base">the base package</a>.</p>
 
-<div class="highlight highlight-hs"><pre><span class="pl-k">import</span> <span class="pl-c1">Flow</span></pre></div>
+<div class="highlight highlight-source-haskell"><pre><span class="pl-k">import</span> <span class="pl-c1">Flow</span></pre></div>
 
-<p>Here is a quick overview of the functions and operators that Flow provides.</p>
+<h3>
+<a id="cheat-sheet" class="anchor" href="#cheat-sheet" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cheat sheet</h3>
 
 <table>
 <thead>
@@ -79,10 +80,6 @@ conflicts with <a href="http://hackage.haskell.org/package/base">the base packag
 </thead>
 <tbody>
 <tr>
-<td><code>apply x f</code></td>
-<td><code>f x</code></td>
-</tr>
-<tr>
 <td><code>x |&gt; f</code></td>
 <td><code>x &amp; f</code></td>
 </tr>
@@ -91,8 +88,8 @@ conflicts with <a href="http://hackage.haskell.org/package/base">the base packag
 <td><code>f $ x</code></td>
 </tr>
 <tr>
-<td><code>compose f g x</code></td>
-<td><code>g (f x)</code></td>
+<td><code>apply x f</code></td>
+<td><code>f x</code></td>
 </tr>
 <tr>
 <td><code>f .&gt; g</code></td>
@@ -103,8 +100,8 @@ conflicts with <a href="http://hackage.haskell.org/package/base">the base packag
 <td><code>g . f</code></td>
 </tr>
 <tr>
-<td><code>apply' x f</code></td>
-<td><code>seq x (f x)</code></td>
+<td><code>compose f g x</code></td>
+<td><code>g (f x)</code></td>
 </tr>
 <tr>
 <td><code>x !&gt; f</code></td>
@@ -113,6 +110,10 @@ conflicts with <a href="http://hackage.haskell.org/package/base">the base packag
 <tr>
 <td><code>f &lt;! x</code></td>
 <td><code>f $! x</code></td>
+</tr>
+<tr>
+<td><code>apply' x f</code></td>
+<td><code>seq x (f x)</code></td>
 </tr>
 </tbody>
 </table>
@@ -130,4 +131,3 @@ conflicts with <a href="http://hackage.haskell.org/package/base">the base packag
   
   </body>
 </html>
-
