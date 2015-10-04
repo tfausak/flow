@@ -1,4 +1,12 @@
 {- |
+    Flow provides operators for writing more understandable Haskell. It is an
+    alternative to some common idioms like ('Prelude.$') for function
+    application and ('Prelude..') for function composition.
+
+    Flow is designed to be imported unqualified. It does not export anything
+    that conflicts with the base package.
+
+    >>> import Flow
 -}
 module Flow (
     -- * Function application
