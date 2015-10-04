@@ -65,9 +65,9 @@ Flow            | Base
 For more information about Flow, please read [the Haddock documentation][].
 
 [flow]: http://taylor.fausak.me/flow/
-[version]: https://img.shields.io/hackage/v/flow.svg?label=version&style=flat-square
-[build]: https://img.shields.io/travis/tfausak/flow/master.svg?label=build&style=flat-square
-[dependencies]: https://img.shields.io/hackage-deps/v/flow.svg?label=dependencies&style=flat-square
+[version]: https://img.shields.io/hackage/v/flow.svg?label=version
+[build]: https://img.shields.io/travis/tfausak/flow/master.svg?label=build
+[dependencies]: https://img.shields.io/hackage-deps/v/flow.svg?label=dependencies
 [`($)`]: http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:-36-
 [`(.)`]: http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:.
 [semantic versioning]: http://semver.org/spec/v2.0.0.html
