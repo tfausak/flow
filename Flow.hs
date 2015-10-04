@@ -25,9 +25,9 @@ import Prelude (seq)
 
 {- $setup
     >>> import Prelude
-    >>> let f = (+ 2)
-    >>> let g = (* 2)
-    >>> let h = (^ 2)
+    >>> let f = (+ 3)
+    >>> let g = (* 3)
+    >>> let h = (^ 3)
 -}
 
 {- |
