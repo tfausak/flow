@@ -66,7 +66,7 @@ import Prelude (seq)
 
     Or use it anywhere you would use ('Prelude.&').
 -}
-infixl 0 |>
+infixl 1 |>
 (|>) :: a -> (a -> b) -> b
 x |> f = apply x f
 
@@ -84,6 +84,14 @@ x |> f = apply x f
     -0.25
 
     Or use it anywhere you would use ('Prelude.$').
+
+    Note that this operator's precedence is lower than ('|>'), so they can be
+    used together.
+
+    >>> print <| 3 |> succ
+    4
+    >>> 2 |> subtract <| 4
+    2
 -}
 infixr 0 <|
 (<|) :: (a -> b) -> a -> b
@@ -136,8 +144,17 @@ f .> g = compose f g
     -0.25
 
     Or use it anywhere you would use ('Prelude..').
+
+    Note that this operator's precedence is lower than ('.>'), so they can be
+    used together.
+
+    -- ((1 + 2) * 3) ^ 4
+    >>> ((^ 4) <. (+ 2) .> (* 3)) 1
+    6561
+    >>> ((* 3) .> (^ 4) <. (+ 2)) 1
+    6561
 -}
-infixr 9 <.
+infixr 8 <.
 (<.) :: (b -> c) -> (a -> b) -> (a -> c)
 g <. f = compose f g
 
@@ -175,7 +192,7 @@ compose f g = \ x -> g (f x)
     >>> undefined !> const True
     *** Exception: Prelude.undefined
 -}
-infixl 0 !>
+infixl 1 !>
 (!>) :: a -> (a -> b) -> b
 x !> f = apply' x f
 
@@ -199,6 +216,14 @@ x !> f = apply' x f
     True
     >>> const True <! undefined
     *** Exception: Prelude.undefined
+
+    Note that this operator's precedence is lower than ('!>'), so they can be
+    used together.
+
+    >>> print <! 3 !> succ
+    4
+    >>> 2 !> subtract <! 4
+    2
 -}
 infixr 0 <!
 (<!) :: (a -> b) -> a -> b
