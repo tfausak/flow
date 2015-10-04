@@ -7,6 +7,32 @@
     that conflicts with the base package.
 
     >>> import Flow
+
+    == Rationale
+
+    I think that Haskell can be hard to read. It has two operators for applying
+    functions. Both are not really necessary and only serve to reduce
+    parentheses. But they make code hard to read. People who do not already
+    know Haskell have no chance of guessing what @foo $ bar@ or @baz & qux@
+    mean.
+
+    Those that do know Haskell are forced to read lines forwards and backwards
+    at the same time, thanks to function composition. Even something simple,
+    like finding the minimum element, bounces around: @f = head . sort@.
+
+    I think we can do better. By using directional operators, we can allow
+    readers to move their eye in only one direction, be that left-to-right or
+    right-to-left. And by using idioms common in other programming languages,
+    we can allow people who aren't familiar with Haskell to guess at the
+    meaning.
+
+    So instead of ('Prelude.$'), I propose ('<|'). It is a pipe, which anyone
+    who has touched a Unix system should be familiar with. And it points in the
+    direction it sends arguments along. Similarly, replace ('Prelude.&') with
+    ('|>'). And for composition, ('<.') replaces ('Prelude..'). I would have
+    preferred @<<@, but its counterpart @>>@ is taken by Haskell's syntax.
+    So-called "backwards" composition is normally expressed with
+    ('Control.Category.>>>'), which Flow provides as ('.>').
 -}
 module Flow (
     -- * Function application
