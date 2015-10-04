@@ -26,10 +26,10 @@ main = defaultMain
     ]
 
 x :: Int
-x = 2
+x = 3
 
 f :: Int -> Int
-f = (+ 2)
+f y = y + 3
 
 g :: Int -> Int
-g = (* 2)
+g y = y * 3
