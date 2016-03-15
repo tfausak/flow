@@ -1,6 +1,22 @@
-language: haskell
-ghc:
-- '7.8'
-- '7.6'
-- '7.4'
-- '7.0'
+addons:
+  apt:
+    packages:
+    - libgmp-dev
+after_success:
+- ! 'test $TRAVIS_TAG && mkdir -p ~/.stack/upload && echo "{ \"username\": \"$HACKAGE_USERNAME\"
+  , \"password\": \"$HACKAGE_PASSWORD\" }" > ~/.stack/upload/credentials.json && stack
+  upload .'
+before_install:
+- mkdir -p $HOME/.local/bin
+- export PATH=$HOME/.local/bin:$PATH
+- travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards
+  --strip-components=1 -C ~/.local/bin '*/stack'
+- stack setup
+cache:
+  directories:
+  - $HOME/.stack
+language: c
+script:
+- stack --no-terminal build --haddock --pedantic --test
+- stack sdist
+sudo: false

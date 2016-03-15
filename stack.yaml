@@ -1,2 +1,3 @@
-packages: [.]
-resolver: lts-3.7
+install-ghc: true
+require-stack-version: ! '>=1.0.4'
+resolver: lts-5.8
