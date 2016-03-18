@@ -16,13 +16,13 @@ license: MIT
 maintainer: Taylor Fausak
 name: flow
 synopsis: Write more understandable Haskell.
-version: '1.0.2'
 tests:
   flow-test-suite:
-    main: FlowTest.hs
     dependencies:
     - base
     - doctest >=0.9 && <0.11
     - flow
     - QuickCheck ==2.*
     - template-haskell ==2.*
+    main: FlowTest.hs
+version: '1.0.2'
