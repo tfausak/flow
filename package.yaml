@@ -25,4 +25,4 @@ tests:
     - QuickCheck ==2.*
     - template-haskell ==2.*
     main: FlowTest.hs
-version: '1.0.2'
+version: '1.0.4'
