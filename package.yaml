@@ -12,6 +12,8 @@ github: tfausak/flow
 library:
   dependencies:
   - base <5
+  exposed-modules:
+  - Flow
 license: MIT
 maintainer: Taylor Fausak
 name: flow
