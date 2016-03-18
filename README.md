@@ -3,7 +3,7 @@
 Write more understandable Haskell.
 
 [![Version badge][]][version]
-[![Build badge]][build]
+[![Build badge][]][build]
 
 Flow is a package that provides functions and operators for writing more
 understandable Haskell. It is an alternative to some common idioms like
@@ -56,8 +56,8 @@ Flow            | Base
 For more information about Flow, please read [the Haddock documentation][].
 
 [Flow]: http://taylor.fausak.me/flow/
-[Version badge]: https://img.shields.io/hackage/v/flow.svg?label=version
-[version]: https://hackage.haskell.org/package/flow
+[Version badge]: https://www.stackage.org/package/flow/badge/nightly?label=version
+[version]: https://www.stackage.org/package/flow
 [Build badge]: https://travis-ci.org/tfausak/flow.svg?branch=master
 [build]: https://travis-ci.org/tfausak/flow
 [`($)`]: http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:-36-
