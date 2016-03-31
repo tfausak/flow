@@ -22,7 +22,7 @@ tests:
   flow-test-suite:
     dependencies:
     - base
-    - doctest >=0.9 && <0.11
+    - doctest >=0.9 && <0.12
     - flow
     - QuickCheck ==2.*
     - template-haskell ==2.*
