@@ -174,6 +174,7 @@ compose f g = \ x -> g (f x)
     True
     >>> undefined !> const True
     *** Exception: Prelude.undefined
+    ...
 -}
 infixl 0 !>
 (!>) :: a -> (a -> b) -> b
@@ -199,6 +200,7 @@ x !> f = apply' x f
     True
     >>> const True <! undefined
     *** Exception: Prelude.undefined
+    ...
 -}
 infixr 0 <!
 (<!) :: (a -> b) -> a -> b
@@ -221,6 +223,7 @@ f <! x = apply' x f
     True
     >>> apply' undefined (const True)
     *** Exception: Prelude.undefined
+    ...
 -}
 apply' :: a -> (a -> b) -> b
 apply' x f = seq x (apply x f)
