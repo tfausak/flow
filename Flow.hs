@@ -66,7 +66,7 @@ import Prelude (seq)
 
     Or use it anywhere you would use ('Prelude.&').
 -}
-infixl 0 |>
+infixl 1 |>
 (|>) :: a -> (a -> b) -> b
 x |> f = apply x f
 
@@ -176,7 +176,7 @@ compose f g = \ x -> g (f x)
     *** Exception: Prelude.undefined
     ...
 -}
-infixl 0 !>
+infixl 1 !>
 (!>) :: a -> (a -> b) -> b
 x !> f = apply' x f
 
