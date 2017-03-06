@@ -41,6 +41,10 @@ module Flow (
     (.>), (<.), compose,
     -- * Strict function application
     (!>), (<!), apply',
+    -- * Unicode operators
+    (▷), (◁),
+    (⋗), (⋖),
+    (▶), (◀),
 ) where
 
 import Prelude (seq)
@@ -227,3 +231,69 @@ f <! x = apply' x f
 -}
 apply' :: a -> (a -> b) -> b
 apply' x f = seq x (apply x f)
+
+{- |
+    prop> (x ▷ f) == f x
+
+    prop> (x ▷ f ▷ g) == g (f x)
+
+    Unicode ('|>') operator.
+-}
+infixl 0 ▷
+(▷) :: α -> (α -> β) -> β
+(▷) = (|>)
+
+{- |
+    prop> (f ◁ x) == f x
+
+    prop> (g ◁ f ◁ x) == g (f x)
+
+    Unicode ('<|') operator.
+-}
+infixr 0 ◁
+(◁) :: (α -> β) -> α -> β
+(◁) = (<|)
+
+{- |
+    prop> (f ⋗ g) x == g (f x)
+
+    prop> (f ⋗ g ⋗ h) x == h (g (f x))
+
+    Unicode ('.>') operator.
+-}
+infixr 9 ⋗
+(⋗) :: (α -> β) -> (β -> γ) -> (α -> γ)
+(⋗) = (.>)
+
+{- |
+    prop> (g ⋖ f) x == g (f x)
+
+    prop> (h ⋖ g ⋖ f) x == h (g (f x))
+
+    Unicode ('<.') operator.
+-}
+infixr 9 ⋖
+(⋖) :: (β -> γ) -> (α -> β) -> (α -> γ)
+(⋖) = (<.)
+
+{- |
+    prop> (x ▶ f) == f x
+
+    prop> (x ▶ f ▶ g) == g (f x)
+
+    Unicode ('!>') operator.
+-}
+infixl 0 ▶
+(▶) :: α -> (α -> β) -> β
+(▶) = (!>)
+
+{- |
+    prop> (f ◀ x) == f x
+
+    prop> (g ◀ f ◀ x) == g (f x)
+
+    Unicode ('<!') operator.
+-}
+infixr 0 ◀
+(◀) :: (α -> β) -> α -> β
+(◀) = (<!)
