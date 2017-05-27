@@ -43,8 +43,8 @@ import Flow
 
 Flow            | Base
 --------------- | -------------
-`x |> f`        | `x & f`
-`f <| x`        | `f $ x`
+<code>x &#124;> f</code> | `x & f`
+<code>f <&#124; x</code> | `f $ x`
 `apply x f`     | `f x`
 `f .> g`        | `f >>> g`
 `g <. f`        | `g . f`
