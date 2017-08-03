@@ -1,5 +1,5 @@
 name: flow
-version: '1.0.8'
+version: 1.0.9
 
 category: Combinators, Functions, Utility
 description: Flow provides operators for writing more understandable Haskell.
