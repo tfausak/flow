@@ -75,6 +75,12 @@ x |> f = apply x f
 --
 -- Or use it anywhere you would use ('Prelude.$').
 --
+-- Note that ('<|') and ('|>') have the same precedence, so they cannot be used
+-- together.
+--
+-- >>> -- This doesn't work!
+-- >>> -- print <| 3 |> succ |> recip |> negate
+--
 -- prop> \ x -> (f <| x) == f x
 --
 -- prop> \ x -> (g <| f <| x) == g (f x)
@@ -87,6 +93,15 @@ f <| x = apply x f
 -- like 'Prelude.map'.
 --
 -- >>> map (apply 2) [succ, recip, negate]
+-- [3.0,0.5,-2.0]
+--
+-- In general you should prefer using an explicit lambda or operator section.
+--
+-- >>> map (\ f -> 2 |> f) [succ, recip, negate]
+-- [3.0,0.5,-2.0]
+-- >>> map (2 |>) [succ, recip, negate]
+-- [3.0,0.5,-2.0]
+-- >>> map (<| 2) [succ, recip, negate]
 -- [3.0,0.5,-2.0]
 --
 -- prop> \ x -> apply x f == f x
@@ -121,6 +136,12 @@ f .> g = compose f g
 --
 -- Or use it anywhere you would use ('Prelude..').
 --
+-- Note that ('<.') and ('.>') have the same precedence, so they cannot be used
+-- together.
+--
+-- >>> -- This doesn't work!
+-- >>> -- print <. succ .> recip .> negate
+--
 -- prop> \ x -> (g <. f) x == g (f x)
 --
 -- prop> \ x -> (h <. g <. f) x == h (g (f x))
@@ -134,6 +155,15 @@ g <. f = compose f g
 --
 -- >>> let fs = map (compose succ) [recip, negate]
 -- >>> map (apply 3) fs
+-- [0.25,-4.0]
+--
+-- In general you should prefer using an explicit lambda or operator section.
+--
+-- >>> map (\ f -> f 3) (map (\ f -> succ .> f) [recip, negate])
+-- [0.25,-4.0]
+-- >>> map (\ f -> f 3) (map (succ .>) [recip, negate])
+-- [0.25,-4.0]
+-- >>> map (\ f -> f 3) (map (<. succ) [recip, negate])
 -- [0.25,-4.0]
 --
 -- prop> \ x -> compose f g x == g (f x)
@@ -180,6 +210,12 @@ x !> f = apply' x f
 -- *** Exception: Prelude.undefined
 -- ...
 --
+-- Note that ('<!') and ('!>') have the same precedence, so they cannot be used
+-- together.
+--
+-- >>> -- This doesn't work!
+-- >>> -- print <! 3 !> succ !> recip !> negate
+--
 -- prop> \ x -> (f <! x) == seq x (f x)
 --
 -- prop> \ x -> (g <! f <! x) == let y = seq x (f x) in seq y (g y)
@@ -202,6 +238,15 @@ f <! x = apply' x f
 -- >>> apply' undefined (const True)
 -- *** Exception: Prelude.undefined
 -- ...
+--
+-- In general you should prefer using an explicit lambda or operator section.
+--
+-- >>> map (\ f -> 2 !> f) [succ, recip, negate]
+-- [3.0,0.5,-2.0]
+-- >>> map (2 !>) [succ, recip, negate]
+-- [3.0,0.5,-2.0]
+-- >>> map (<! 2) [succ, recip, negate]
+-- [3.0,0.5,-2.0]
 --
 -- prop> \ x -> apply' x f == seq x (f x)
 apply' :: a -> (a -> b) -> b
