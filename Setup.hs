@@ -1,4 +1,4 @@
-import qualified Distribution.Simple
+import qualified Distribution.Simple as Cabal
 
 main :: IO ()
-main = Distribution.Simple.defaultMain
+main = Cabal.defaultMain

@@ -1,2 +1,7 @@
-/.stack-work/
-/*.cabal
+.stack-work/
+*.cabal
+*.hi
+*.hp
+*.o
+*.prof
+*.tix

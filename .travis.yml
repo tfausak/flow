@@ -1,22 +1,50 @@
+sudo: false
+language: generic
 addons:
   apt:
     packages:
-    - libgmp-dev
-after_success:
-- ! 'test $TRAVIS_TAG && mkdir -p ~/.stack/upload && echo "{ \"username\": \"$HACKAGE_USERNAME\"
-  , \"password\": \"$HACKAGE_PASSWORD\" }" > ~/.stack/upload/credentials.json && stack
-  upload .'
-before_install:
-- mkdir -p $HOME/.local/bin
-- export PATH=$HOME/.local/bin:$PATH
-- travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards
-  --strip-components=1 -C ~/.local/bin '*/stack'
-- stack setup
+      - libgmp-dev
 cache:
   directories:
-  - $HOME/.stack
-language: c
+    - $HOME/.local/bin
+    - $HOME/.stack
+before_install:
+  - |
+    if test ! -f "$HOME/.local/bin/stack"
+    then
+      VERSION=1.6.5
+      URL="https://github.com/commercialhaskell/stack/releases/download/v$VERSION/stack-$VERSION-$TRAVIS_OS_NAME-x86_64.tar.gz"
+      cd /tmp
+      curl --location "$URL" > stack.tar.gz
+      gunzip stack.tar.gz
+      tar --extract --file stack.tar --strip-components 1
+      mkdir --parents "$HOME/.local/bin"
+      mv stack "$HOME/.local/bin"
+      cd -
+    fi
+  - stack --version
+install:
+  - stack setup
+  - stack build --only-dependencies --test
 script:
-- stack --no-terminal build --haddock --pedantic --test
-- stack sdist
-sudo: false
+  - stack build --pedantic --test
+  - stack sdist
+after_success:
+  - mkdir -p deploy
+  - cp -v "$(stack path --dist-dir)/flow-$TRAVIS_TAG.tar.gz" deploy/flow.tgz
+  - mkdir -p "$HOME/.stack/upload"
+  - >-
+    echo "{
+    \"username\": \"$HACKAGE_USERNAME\",
+    \"password\": \"$HACKAGE_PASSWORD\"
+    }" > "$HOME/.stack/upload/credentials.json"
+deploy:
+  - skip_cleanup: true
+    on: { tags: true }
+    provider: releases
+    api_key: { secure: OiJZZljO8LI0D1UHeoybjc4aOmyo+aNzta/hVyKEzlyXSCYIH4ucqpfDXmu+9UPce4FsfBu5I8PwMRfre0VcBQnGK8igmfVYTDP/TKqhqVnH54/SSOfcrn/glyl94btctudxn6RJu9SP5L6lwvOO+gJVgLWPGT3Ai+22uUK8DDQ= }
+    file: deploy/flow.tgz
+  - skip_cleanup: true
+    on: { tags: true }
+    provider: script
+    script: stack upload .

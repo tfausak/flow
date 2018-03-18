@@ -4,27 +4,33 @@ version: 1.0.11
 category: Combinators, Functions, Utility
 description: Flow provides operators for writing more understandable Haskell.
 extra-source-files:
-  - CHANGELOG.md
-  - LICENSE.md
+  - CHANGELOG.markdown
   - package.yaml
-  - README.md
+  - README.markdown
   - stack.yaml
 github: tfausak/flow
+license-file: LICENSE.markdown
 license: MIT
 maintainer: Taylor Fausak
 synopsis: Write more understandable Haskell.
 
-dependencies: base < 5
-ghc-options: -Wall
+dependencies:
+  base: '>= 4.9.0 && < 4.12'
+ghc-options:
+  -Weverything
+  -Wno-implicit-prelude
+  -Wno-safe
+  -Wno-unsafe
 
 library:
-  exposed-modules: Flow
+  source-dirs: library
 
 tests:
   test:
     dependencies:
-      - doctest >= 0.9 && < 0.15
-      - flow
-      - QuickCheck == 2.*
-      - template-haskell == 2.*
-    main: FlowTest.hs
+      doctest: '>= 0.11.0 && < 0.16'
+      flow: -any
+      QuickCheck: '>= 2.8.2 && < 2.12'
+      template-haskell: '>= 2.11.0 && < 2.14'
+    main: Main.hs
+    source-dirs: tests
