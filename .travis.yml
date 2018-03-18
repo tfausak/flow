@@ -8,6 +8,10 @@ cache:
   directories:
     - $HOME/.local/bin
     - $HOME/.stack
+env:
+  global:
+    - HACKAGE_USERNAME=fozworth
+    - secure: FnzQg9ET4TpOt74XKO0Ago9cdFR4ks8DDaavwpKJlDPSD/bJl1zeBWqnRs2qx55jVRzBR7fNdTDWJEOfFu/WZCOM4HjoNrjqHEBjHYrfpF+1TvoR4pz7kysK50pu8kUr86hxB6YCgjh8d3xPnh1gM/e5vhnMbbJa8Bm0iOm48DE=
 before_install:
   - |
     if test ! -f "$HOME/.local/bin/stack"
