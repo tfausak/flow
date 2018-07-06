@@ -28,7 +28,7 @@ library:
 tests:
   test:
     dependencies:
-      doctest: '>= 0.11.0 && < 0.16'
+      doctest: '>= 0.11.0 && < 0.17'
       flow: -any
       QuickCheck: '>= 2.8.2 && < 2.12'
       template-haskell: '>= 2.11.0 && < 2.14'
