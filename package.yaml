@@ -15,7 +15,7 @@ maintainer: Taylor Fausak
 synopsis: Write more understandable Haskell.
 
 dependencies:
-  base: '>= 4.9.0 && < 4.12'
+  base: '>= 4.9.0 && < 4.13'
 ghc-options:
   -Weverything
   -Wno-implicit-prelude
@@ -31,6 +31,6 @@ tests:
       doctest: '>= 0.11.0 && < 0.17'
       flow: -any
       QuickCheck: '>= 2.8.2 && < 2.13'
-      template-haskell: '>= 2.11.0 && < 2.14'
+      template-haskell: '>= 2.11.0 && < 2.15'
     main: Main.hs
     source-dirs: tests
