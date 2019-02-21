@@ -7,16 +7,17 @@ pool:
 steps:
 
   - script: |
-      mkdir --parents $HOME/.local/bin
       mkdir --parents /tmp/stack
       pushd /tmp/stack
       curl --location --output stack.tar.gz 'https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-linux-x86_64.tar.gz'
       gunzip stack.tar.gz
       tar --extract --file stack.tar --strip-components 1
+      mkdir --parents $HOME/.local/bin
       mv stack $HOME/.local/bin/
       popd
       stack --version
-
-  - script: |
-      export PATH=$HOME/.local/bin:$PATH
       stack setup
+      stack update
+      stack build --dry-run --prefetch --test
+      stack build --only-dependencies --test
+      stack build --pedantic --test
