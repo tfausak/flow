@@ -17,3 +17,8 @@ steps:
       mv stack $HOME/.local/bin/
       popd
       stack --version
+
+  - script: |
+      pwd
+      ls
+      stack setup
