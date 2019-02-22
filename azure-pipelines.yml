@@ -32,10 +32,10 @@ jobs:
       - script: |
           set -o errexit -o xtrace
 
-          mkdir --parents $HOME/.local/bin
+          mkdir -p $HOME/.local/bin
           export PATH=$HOME/.local/bin:$PATH
 
-          mkdir --parents /tmp/stack
+          mkdir -p /tmp/stack
           pushd /tmp/stack
           curl --location --output stack.tar.gz 'https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-osx-x86_64.tar.gz'
           gunzip stack.tar.gz
