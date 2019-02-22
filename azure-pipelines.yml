@@ -1,28 +1,51 @@
-trigger:
-  - master
+jobs:
 
-pool:
-  vmImage: Ubuntu-16.04
+  - job: linux
+    pool:
+      vmImage: ubuntu-16.04
+    steps:
+      - script: |
+          set -o errexit -o xtrace
 
-steps:
+          mkdir --parents $HOME/.local/bin
+          export PATH=$HOME/.local/bin:$PATH
 
-  - script: |
-      set -o errexit -o xtrace
+          mkdir --parents /tmp/stack
+          pushd /tmp/stack
+          curl --location --output stack.tar.gz 'https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-linux-x86_64.tar.gz'
+          gunzip stack.tar.gz
+          tar --extract --file stack.tar --strip-components 1
+          mv stack $HOME/.local/bin/
+          popd
 
-      mkdir --parents $HOME/.local/bin
-      export PATH=$HOME/.local/bin:$PATH
+          stack --version
+          stack setup
+          stack update
+          stack build --dry-run --prefetch --test
+          stack build --only-dependencies --test
+          stack build --pedantic --test
 
-      mkdir --parents /tmp/stack
-      pushd /tmp/stack
-      curl --location --output stack.tar.gz 'https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-linux-x86_64.tar.gz'
-      gunzip stack.tar.gz
-      tar --extract --file stack.tar --strip-components 1
-      mv stack $HOME/.local/bin/
-      popd
+  - job: macos
+    pool:
+      vmImage: macos-10.13
+    steps:
+      - script: |
+          set -o errexit -o xtrace
 
-      stack --version
-      stack setup
-      stack update
-      stack build --dry-run --prefetch --test
-      stack build --only-dependencies --test
-      stack build --pedantic --test
+          mkdir --parents $HOME/.local/bin
+          export PATH=$HOME/.local/bin:$PATH
+
+          mkdir --parents /tmp/stack
+          pushd /tmp/stack
+          curl --location --output stack.tar.gz 'https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-osx-x86_64.tar.gz'
+          gunzip stack.tar.gz
+          tar --extract --file stack.tar --strip-components 1
+          mv stack $HOME/.local/bin/
+          popd
+
+          stack --version
+          stack setup
+          stack update
+          stack build --dry-run --prefetch --test
+          stack build --only-dependencies --test
+          stack build --pedantic --test
