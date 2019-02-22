@@ -49,3 +49,18 @@ jobs:
           stack build --dry-run --prefetch --test
           stack build --only-dependencies --test
           stack build --pedantic --test
+  
+  - job: windows
+    pool:
+      vmImage: vs2017-win2016
+    steps:
+      - script: |
+          curl -OutFile stack.zip -Uri https://github.com/commercialhaskell/stack/releases/download/v1.9.3/stack-1.9.3-windows-x86_64.zip
+          7z x stack.zip stack.exe
+
+          ./stack --version
+          ./stack setup
+          ./stack update
+          ./stack build --dry-run --prefetch --test
+          ./stack build --only-dependencies --test
+          ./stack build --pedantic --test
