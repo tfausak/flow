@@ -1,0 +1,36 @@
+- hint: 
+    lhs: 'f $! x'
+    note: 'Use `<!`'
+    rhs: 'f <! x'
+
+- hint: 
+    lhs: 'f $ x'
+    note: 'Use `<|`'
+    rhs: 'f <| x'
+
+- hint: 
+    lhs: 'x & f'
+    note: 'Use `|>`'
+    rhs: 'f |> x'
+
+- hint: 
+    lhs: 'f . g'
+    note: 'Use `<.`'
+    rhs: 'f <. g'
+
+
+- hint: 
+    lhs: 'f <| x'
+    note: 'Use `|>` for natural reading direction' 
+    rhs: 'x |> f'
+
+
+- hint: 
+    lhs: 'f <. g'
+    note: 'Use `.>` for natural reading direction'
+    rhs: 'g .> f'
+
+- hint: 
+    lhs: 'f <! g'
+    note: 'Use `!>` for natural reading direction'
+    rhs: 'g !> f'
