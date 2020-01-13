@@ -171,7 +171,7 @@ compose :: (a -> b) -> (b -> c) -> (a -> c)
 compose f g = \ x -> g (f x)
 
 -- | Left-associative 'apply'' operator. Read as "strict apply forward" or
--- "strict pipe info". Use this to create long chains of computation that
+-- "strict pipe into". Use this to create long chains of computation that
 -- suggest which direction things move in.
 --
 -- >>> 3 !> succ !> recip !> negate
