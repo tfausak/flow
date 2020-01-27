@@ -53,8 +53,27 @@ Flow            | Base
 `f <! x`        | `f $! x`
 `apply' x f`    | `seq x (f x)`
 
+### Converting existing code
+
+If you want to uniformly use flow operators you can use [HLint] with the
+`hlint-flow.yaml` file. For easy use, it is best to extract the 
+`hlint-flow.yaml` to your project directory and do
+
+``` sh
+> hlint -h hlint-flow.yaml <source file>  
+```
+
+or
+
+``` sh
+> hlint --git -h hlint-flow.yaml
+```
+
+to check all Haskell source tracked by git.
+
 For more information about Flow, please read [the Haddock documentation][].
 
+[HLint]: https://github.com/ndmitchell/hlint
 [Flow]: http://taylor.fausak.me/flow/
 [Version badge]: https://www.stackage.org/package/flow/badge/nightly?label=version
 [version]: https://www.stackage.org/package/flow
