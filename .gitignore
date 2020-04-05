@@ -1,8 +1,2 @@
-.stack-work/
-*.cabal
-*.hi
-*.hp
-*.o
-*.prof
-*.tix
+/.stack-work/
 /stack.yaml.lock

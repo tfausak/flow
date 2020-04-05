@@ -1,9 +1,10 @@
 # [Flow][]
 
-Write more understandable Haskell.
+[![Travis CI](https://travis-ci.org/tfausak/flow.svg?branch=master)](https://travis-ci.org/tfausak/flow)
+[![Hackage](https://img.shields.io/hackage/v/flow)](https://hackage.haskell.org/package/flow)
+[![Stackage](https://www.stackage.org/package/flow/badge/nightly?label=stackage)](https://www.stackage.org/package/flow)
 
-[![Version badge][]][version]
-[![Build badge][]][build]
+Write more understandable Haskell.
 
 Flow is a package that provides functions and operators for writing more
 understandable Haskell. It is an alternative to some common idioms like
@@ -27,8 +28,6 @@ To add Flow as a dependency to your package, add it to your Cabal file.
 ```
 build-depends: flow ==1.0.*
 ```
-
-See [the change log][] for a detailed list of changes.
 
 ## Usage
 
@@ -56,11 +55,11 @@ Flow            | Base
 ### Converting existing code
 
 If you want to uniformly use flow operators you can use [HLint] with the
-`hlint-flow.yaml` file. For easy use, it is best to extract the 
+`hlint-flow.yaml` file. For easy use, it is best to extract the
 `hlint-flow.yaml` to your project directory and do
 
 ``` sh
-> hlint -h hlint-flow.yaml <source file>  
+> hlint -h hlint-flow.yaml <source file>
 ```
 
 or
@@ -75,12 +74,7 @@ For more information about Flow, please read [the Haddock documentation][].
 
 [HLint]: https://github.com/ndmitchell/hlint
 [Flow]: http://taylor.fausak.me/flow/
-[Version badge]: https://www.stackage.org/package/flow/badge/nightly?label=version
-[version]: https://www.stackage.org/package/flow
-[Build badge]: https://travis-ci.org/tfausak/flow.svg?branch=master
-[build]: https://travis-ci.org/tfausak/flow
 [`($)`]: http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:-36-
 [`(.)`]: http://hackage.haskell.org/package/base-4.8.0.0/docs/Prelude.html#v:.
-[the change log]: CHANGELOG.md
 [the base package]: http://hackage.haskell.org/package/base
 [the haddock documentation]: https://hackage.haskell.org/package/flow/docs/Flow.html

@@ -1,4 +1,4 @@
 import qualified Test.DocTest as Doctest
 
 main :: IO ()
-main = Doctest.doctest ["library"]
+main = Doctest.doctest ["src/lib"]
