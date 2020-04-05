@@ -17,7 +17,6 @@ source-repository head
   location: https://github.com/tfausak/flow
 
 library
-  autogen-modules: Paths_flow
   build-depends:
     base >= 4.9.0 && < 4.15
   default-language: Haskell98
@@ -28,7 +27,6 @@ library
     -Wno-safe
     -Wno-unsafe
   hs-source-dirs: src/lib
-  other-modules: Paths_flow
 
   if impl(ghc >= 8.10.1)
     ghc-options:
