@@ -30,13 +30,16 @@ library
   hs-source-dirs: src/lib
   other-modules: Paths_flow
 
+  if impl(ghc >= 8.10.1)
+    ghc-options:
+      -Wno-missing-safe-haskell-mode
+      -Wno-prepositive-qualified-module
+
 test-suite test
   build-depends:
     base -any
-    , doctest >= 0.11.0 && < 0.17
     , flow -any
-    , QuickCheck >= 2.8.2 && < 2.15
-    , template-haskell >= 2.11.0 && < 2.17
+    , HUnit >= 1.6.0 && < 1.7
   default-language: Haskell98
   hs-source-dirs: src/test
   main-is: Main.hs

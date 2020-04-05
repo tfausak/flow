@@ -43,12 +43,6 @@ module Flow (
 
 import Prelude (seq)
 
--- $setup
--- >>> import Prelude
--- >>> let f = (+ 3)
--- >>> let g = (* 3)
--- >>> let h = (^ 3)
-
 -- | Left-associative 'apply' operator. Read as "apply forward" or "pipe into".
 -- Use this to create long chains of computation that suggest which direction
 -- things move in.
