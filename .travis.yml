@@ -20,8 +20,8 @@ before_install:
   - |
     if ! test -f "$HOME/.local/bin/stack"
     then
-      VERSION=2.3.0.1
-      URL="https://github.com/commercialhaskell/stack/releases/download/v$VERSION/stack-$VERSION-linux-x86_64-static.tar.gz"
+      VERSION=2.3.1
+      URL="https://github.com/commercialhaskell/stack/releases/download/v$VERSION/stack-$VERSION-linux-x86_64.tar.gz"
       curl --location --output stack.tar.gz "$URL"
       gunzip stack.tar.gz
       tar --extract --file stack.tar --strip-components 1
