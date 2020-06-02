@@ -1,7 +1,7 @@
 cabal-version: 2.2
 
 name: flow
-version: 1.0.20
+version: 1.0.21
 
 synopsis: Write more understandable Haskell.
 description: Flow provides operators for writing more understandable Haskell.
