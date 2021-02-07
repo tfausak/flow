@@ -1,0 +1,46 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  release:
+    types:
+      - created
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - { os: ubuntu-18.04, ghc: 9.0.1, cabal: 3.4.0.0 }
+          - { os: ubuntu-18.04, ghc: 8.10.3, cabal: 3.2.0.0 }
+          - { os: macos-10.15, ghc: 8.10.3, cabal: 3.2.0.0 }
+          - { os: windows-2019, ghc: 8.10.3, cabal: 3.2.0.0 }
+          - { os: ubuntu-18.04, ghc: 8.8.4, cabal: 3.0.0.0 }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: setup-haskell
+        uses: haskell/actions/setup@v1
+        with:
+          ghc-version: ${{ matrix.ghc }}
+          cabal-version: ${{ matrix.cabal }}
+      - run: cabal freeze && cat cabal.project.freeze
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.setup-haskell.outputs.cabal-store }}
+          key: ${{ matrix.os }}-${{ matrix.ghc }}-${{ matrix.cabal }}-${{ hashFiles('cabal.project.freeze') }}
+          restore-keys: |
+            ${{ matrix.os }}-${{ matrix.ghc }}-${{ matrix.cabal }}-
+            ${{ matrix.os }}-${{ matrix.ghc }}-
+      - run: cabal test --test-show-details direct
+      - run: cabal sdist
+      - uses: actions/upload-artifact@v2
+        with:
+          path: dist-newstyle/sdist/flow-*.tar.gz
+          name: flow-${{ github.sha }}.tar.gz
+      - run: cabal check
+      - if: github.event_name == 'release' && matrix.os == 'ubuntu-18.04' && matrix.ghc == '9.0.1'
+        run: cabal upload --publish --username '${{ secrets.HACKAGE_USERNAME }}' --password '${{ secrets.HACKAGE_PASSWORD }}' dist-newstyle/sdist/flow-*.tar.gz

@@ -1,6 +1,6 @@
 # [Flow][]
 
-[![Travis CI](https://travis-ci.org/tfausak/flow.svg?branch=master)](https://travis-ci.org/tfausak/flow)
+[![CI](https://github.com/tfausak/flow/workflows/CI/badge.svg)](https://github.com/tfausak/flow/actions/new)
 [![Hackage](https://img.shields.io/hackage/v/flow)](https://hackage.haskell.org/package/flow)
 [![Stackage](https://www.stackage.org/package/flow/badge/nightly?label=stackage)](https://www.stackage.org/package/flow)
 
