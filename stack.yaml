@@ -1,9 +1,1 @@
-# GHC 8.8
-# resolver: lts-16.31
-
-# GHC 8.10
-# resolver: lts-17.0
-
-# GHC 9.0
-resolver: nightly-2021-02-06
-compiler: ghc-9.0.1
+resolver: lts-17.0
