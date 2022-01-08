@@ -1,0 +1,6 @@
+{
+  "purple-yolk.brittany.command": "brittany --config-file config/brittany.yaml --write-mode inplace",
+  "purple-yolk.ghci.command": "cabal repl --repl-options -ddump-json",
+  "purple-yolk.hlint.command": "hlint --hint config/hlint.yaml --json --no-exit-code",
+  "purple-yolk.hlint.onSave": true
+}

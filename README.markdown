@@ -19,14 +19,14 @@ understandable Haskell. It is an alternative to some common idioms like
 
 Flow requires a Haskell compiler. It is tested with recent versions of GHC, but
 older or different compilers should be acceptable. For installation with Cabal,
-Flow requires at least Cabal 1.8.
+Flow requires at least Cabal 2.2.
 
 ## Installation
 
 To add Flow as a dependency to your package, add it to your Cabal file.
 
 ```
-build-depends: flow ==1.0.*
+build-depends: flow ==2.0.*
 ```
 
 ## Usage
