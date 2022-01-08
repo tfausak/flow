@@ -1,14 +1,14 @@
-cabal-version: >= 1.10
+cabal-version: 2.2
 
 name: flow
-version: 1.0.23
+version: 2.0.0.0
 
 synopsis: Write more understandable Haskell.
 description: Flow provides operators for writing more understandable Haskell.
 
 build-type: Simple
 category: Combinators, Functions, Utility
-extra-source-files: README.markdown
+extra-source-files: CHANGELOG.markdown README.markdown
 license-file: LICENSE.markdown
 license: MIT
 maintainer: Taylor Fausak
@@ -17,27 +17,50 @@ source-repository head
   location: https://github.com/tfausak/flow
   type: git
 
-library
+flag pedantic
+  default: False
+  description: Enables @-Werror@, which turns warnings into errors.
+  manual: True
+
+common library
   build-depends:
-    base >= 4.13.0 && < 4.17
+    , base >= 4.13.0 && < 4.17
   default-language: Haskell2010
-  exposed-modules: Flow
   ghc-options:
     -Weverything
+    -Wno-all-missed-specialisations
+    -Wno-implicit-prelude
     -Wno-missing-exported-signatures
     -Wno-safe
-  hs-source-dirs: src/lib
+
+  if flag(pedantic)
+    ghc-options: -Werror
 
   if impl(ghc >= 8.10)
     ghc-options:
       -Wno-missing-safe-haskell-mode
+      -Wno-prepositive-qualified-module
+
+common executable
+  import: library
+
+  build-depends: flow
+  ghc-options:
+    -rtsopts
+    -threaded
+    -Wno-unused-packages
+
+library
+  import: library
+
+  exposed-modules: Flow
+  hs-source-dirs: source/library
 
 test-suite test
+  import: executable
+
   build-depends:
-    base -any
-    , flow -any
     , HUnit >= 1.6.1 && < 1.7
-  default-language: Haskell2010
-  hs-source-dirs: src/test
+  hs-source-dirs: source/test-suite
   main-is: Main.hs
   type: exitcode-stdio-1.0
