@@ -162,7 +162,7 @@ g <. f = compose f g
 --
 -- prop> \ x -> compose f g x == g (f x)
 compose :: (a -> b) -> (b -> c) -> (a -> c)
-compose f g = \ x -> g (f x)
+compose f g x = g (f x)
 
 -- | Left-associative 'apply'' operator. Read as "strict apply forward" or
 -- "strict pipe into". Use this to create long chains of computation that
