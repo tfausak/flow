@@ -14,11 +14,11 @@ jobs:
     strategy:
       matrix:
         include:
+          - { platform: ubuntu, ghc: 9.4.2 }
           - { platform: ubuntu, ghc: 9.2.1 }
           - { platform: macos, ghc: 9.2.1 }
           - { platform: windows, ghc: 9.2.1, extension: .exe }
           - { platform: ubuntu, ghc: 9.0.2 }
-          - { platform: ubuntu, ghc: 8.10.7 }
     runs-on: ${{ matrix.platform }}-latest
     name: GHC ${{ matrix.ghc }} on ${{ matrix.platform }}
     steps:
