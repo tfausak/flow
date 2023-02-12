@@ -1,4 +1,6 @@
 {
-  "image": "ghcr.io/tfausak/haskell-codespace:ghc-9.2",
-  "postCreateCommand": "cabal update"
+  "dockerComposeFile": "compose.yaml",
+  "initializeCommand": "docker volume create cabal-store",
+  "service": "devcontainer",
+  "workspaceFolder": "/workspaces/flow"
 }
