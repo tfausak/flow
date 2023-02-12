@@ -1,6 +1,6 @@
 # [Flow][]
 
-[![CI](https://github.com/tfausak/flow/workflows/CI/badge.svg)](https://github.com/tfausak/flow/actions/new)
+[![Workflow](https://github.com/tfausak/flow/actions/workflows/workflow.yaml/badge.svg)](https://github.com/tfausak/flow/actions/workflows/workflow.yaml)
 [![Hackage](https://img.shields.io/hackage/v/flow)](https://hackage.haskell.org/package/flow)
 [![Stackage](https://www.stackage.org/package/flow/badge/nightly?label=stackage)](https://www.stackage.org/package/flow)
 
