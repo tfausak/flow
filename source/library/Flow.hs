@@ -32,14 +32,23 @@
 -- preferred @<<@, but its counterpart @>>@ is taken by Haskell's syntax.
 -- So-called "backwards" composition is normally expressed with
 -- ('Control.Category.>>>'), which Flow provides as ('.>').
-module Flow (
-    -- * Function application
-    (|>), (<|), apply,
+module Flow
+  ( -- * Function application
+    (|>),
+    (<|),
+    apply,
+
     -- * Function composition
-    (.>), (<.), compose,
+    (.>),
+    (<.),
+    compose,
+
     -- * Strict function application
-    (!>), (<!), apply',
-) where
+    (!>),
+    (<!),
+    apply',
+  )
+where
 
 import Prelude (seq)
 
@@ -56,6 +65,7 @@ import Prelude (seq)
 --
 -- prop> \ x -> (x |> f |> g) == g (f x)
 infixl 0 |>
+
 (|>) :: a -> (a -> b) -> b
 x |> f = apply x f
 
@@ -79,6 +89,7 @@ x |> f = apply x f
 --
 -- prop> \ x -> (g <| f <| x) == g (f x)
 infixr 0 <|
+
 (<|) :: (a -> b) -> a -> b
 f <| x = apply x f
 
@@ -116,6 +127,7 @@ apply x f = f x
 --
 -- prop> \ x -> (f .> g .> h) x == h (g (f x))
 infixl 9 .>
+
 (.>) :: (a -> b) -> (b -> c) -> (a -> c)
 f .> g = compose f g
 
@@ -140,6 +152,7 @@ f .> g = compose f g
 --
 -- prop> \ x -> (h <. g <. f) x == h (g (f x))
 infixr 9 <.
+
 (<.) :: (b -> c) -> (a -> b) -> (a -> c)
 g <. f = compose f g
 
@@ -184,6 +197,7 @@ compose f g x = g (f x)
 --
 -- prop> \ x -> (x !> f !> g) == let y = seq x (f x) in seq y (g y)
 infixl 0 !>
+
 (!>) :: a -> (a -> b) -> b
 x !> f = apply' x f
 
@@ -214,6 +228,7 @@ x !> f = apply' x f
 --
 -- prop> \ x -> (g <! f <! x) == let y = seq x (f x) in seq y (g y)
 infixr 0 <!
+
 (<!) :: (a -> b) -> a -> b
 f <! x = apply' x f
 

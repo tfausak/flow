@@ -1,5 +1,3 @@
-/.stack-work/
-/cabal.project.freeze
-/cabal.project.local*
+/.vscode/
+/cabal.project.*
 /dist-newstyle/
-/stack.yaml.lock
