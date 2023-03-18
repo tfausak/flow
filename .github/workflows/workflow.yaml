@@ -87,17 +87,17 @@
               "version": "12"
             },
             {
-              "ghc": "9.0.2",
-              "platform": "ubuntu",
-              "version": "22.04"
-            },
-            {
-              "ghc": "9.2.5",
+              "ghc": "9.2.7",
               "platform": "ubuntu",
               "version": "22.04"
             },
             {
               "ghc": "9.4.4",
+              "platform": "ubuntu",
+              "version": "22.04"
+            },
+            {
+              "ghc": "9.6.1",
               "platform": "ubuntu",
               "version": "22.04"
             },
