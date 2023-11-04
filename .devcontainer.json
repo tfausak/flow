@@ -1,6 +1,0 @@
-{
-  "dockerComposeFile": "compose.yaml",
-  "initializeCommand": "docker volume create cabal-store",
-  "service": "devcontainer",
-  "workspaceFolder": "/workspaces/flow"
-}
