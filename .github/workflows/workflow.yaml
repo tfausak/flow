@@ -22,7 +22,7 @@
           "id": "haskell",
           "uses": "haskell/actions/setup@v2",
           "with": {
-            "cabal-version": "3.8.1.0",
+            "cabal-version": "3.10.1.0",
             "ghc-version": "${{ matrix.ghc }}"
           }
         },
