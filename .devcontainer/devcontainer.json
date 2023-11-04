@@ -1,0 +1,14 @@
+{
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "taylorfausak.purple-yolk"
+      ]
+    }
+  },
+  "dockerComposeFile": "compose.yaml",
+  "initializeCommand": "docker volume create cabal-state",
+  "postCreateCommand": "cabal update",
+  "service": "devcontainer",
+  "workspaceFolder": "/workspace"
+}
