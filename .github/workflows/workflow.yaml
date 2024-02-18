@@ -22,7 +22,7 @@
           "id": "haskell",
           "uses": "haskell-actions/setup@v2",
           "with": {
-            "cabal-version": "3.10.1.0",
+            "cabal-version": "3.10.2.1",
             "ghc-version": "${{ matrix.ghc }}"
           }
         },
@@ -82,22 +82,17 @@
         "matrix": {
           "include": [
             {
-              "ghc": "9.4.7",
+              "ghc": "9.8.1",
               "platform": "macos",
               "version": "12"
             },
             {
-              "ghc": "9.2.8",
+              "ghc": "9.4.8",
               "platform": "ubuntu",
               "version": "22.04"
             },
             {
-              "ghc": "9.4.7",
-              "platform": "ubuntu",
-              "version": "22.04"
-            },
-            {
-              "ghc": "9.6.2",
+              "ghc": "9.6.4",
               "platform": "ubuntu",
               "version": "22.04"
             },
@@ -108,7 +103,7 @@
             },
             {
               "extension": ".exe",
-              "ghc": "9.4.7",
+              "ghc": "9.8.1",
               "platform": "windows",
               "version": "2022"
             }
@@ -178,11 +173,11 @@
           "uses": "svenstaro/upload-release-action@v2",
           "with": {
             "asset_name": "flow-${{ github.event.release.tag_name }}.tar.gz",
-            "file": "artifact/ubuntu-9.4.7/flow-${{ github.event.release.tag_name }}.tar.gz"
+            "file": "artifact/ubuntu-9.8.1/flow-${{ github.event.release.tag_name }}.tar.gz"
           }
         },
         {
-          "run": "cabal upload --publish --username '${{ secrets.HACKAGE_USERNAME }}' --password '${{ secrets.HACKAGE_PASSWORD }}' artifact/ubuntu-9.4.7/flow-${{ github.event.release.tag_name }}.tar.gz"
+          "run": "cabal upload --publish --username '${{ secrets.HACKAGE_USERNAME }}' --password '${{ secrets.HACKAGE_PASSWORD }}' artifact/ubuntu-9.8.1/flow-${{ github.event.release.tag_name }}.tar.gz"
         }
       ]
     }
