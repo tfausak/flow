@@ -152,7 +152,7 @@
           "uses": "actions/checkout@v4"
         },
         {
-          "uses": "haskell-actions/run-ormolu@v14"
+          "uses": "haskell-actions/run-ormolu@v15"
         }
       ]
     },
