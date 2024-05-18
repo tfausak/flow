@@ -1,15 +1,15 @@
 cabal-version: 2.2
-
 name: flow
 version: 2.0.0.4
-
 synopsis: Write more understandable Haskell.
 description: Flow provides operators for writing more understandable Haskell.
-
 build-type: Simple
 category: Combinators, Functions, Utility
-extra-source-files: CHANGELOG.markdown README.markdown
-license-file: LICENSE.markdown
+extra-doc-files:
+  CHANGELOG.md
+  README.md
+
+license-file: LICENSE.txt
 license: MIT
 maintainer: Taylor Fausak
 
@@ -23,8 +23,7 @@ flag pedantic
   manual: True
 
 common library
-  build-depends:
-    , base >= 4.16.0 && < 4.20
+  build-depends: base ^>=4.18.0.0 || ^>=4.19.0.0 || ^>=4.20.0.0
   default-language: Haskell2010
   ghc-options:
     -Weverything
@@ -40,24 +39,21 @@ common library
 
 common executable
   import: library
-
   build-depends: flow
   ghc-options:
     -rtsopts
     -threaded
-    -Wno-unused-packages
 
 library
   import: library
-
   exposed-modules: Flow
   hs-source-dirs: source/library
 
 test-suite flow-test-suite
   import: executable
-
   build-depends:
-    , HUnit >= 1.6.1 && < 1.7
+    HUnit ^>=1.6.2.0
+
   hs-source-dirs: source/test-suite
   main-is: Main.hs
   type: exitcode-stdio-1.0
