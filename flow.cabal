@@ -46,6 +46,7 @@ common executable
 
 library
   import: library
+  -- cabal-gild: discover source/library
   exposed-modules: Flow
   hs-source-dirs: source/library
 
