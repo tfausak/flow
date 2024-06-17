@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: haskell-actions/hlint-setup@87280353856dea2cb5596618b662440634bbcaad
+      - uses: haskell-actions/hlint-setup@285e006d7b88f4da9371b8180829507d42d43756
       - uses: haskell-actions/hlint-run@v2
         with:
           fail-on: status
