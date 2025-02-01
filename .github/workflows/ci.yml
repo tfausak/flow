@@ -5,15 +5,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: mkdir artifact
-      - id: haskell
-        uses: haskell-actions/setup@v2
+      - uses: haskell/ghcup-setup@v1
         with:
-          ghc-version: ${{ matrix.ghc }}
+          ghc: ${{ matrix.ghc }}
+          cabal: latest
       - run: ghc-pkg list
       - run: cabal sdist --output-dir artifact
       - run: cabal configure --enable-tests --flags=pedantic --jobs
       - run: cat cabal.project.local
       - run: cp cabal.project.local artifact
+      - run: cabal update
       - run: cabal freeze
       - run: cat cabal.project.freeze
       - run: cp cabal.project.freeze artifact
@@ -21,7 +22,7 @@ jobs:
       - uses: actions/cache@v4
         with:
           key: ${{ matrix.os }}-${{ matrix.ghc }}-${{ hashFiles('cabal.project.freeze') }}
-          path: ${{ steps.haskell.outputs.cabal-store }}
+          path: ~/.local/state/cabal
           restore-keys: ${{ matrix.os }}-${{ matrix.ghc }}-
       - run: cabal build --only-download
       - run: cabal build --only-dependencies
@@ -35,17 +36,17 @@ jobs:
     strategy:
       matrix:
         include:
-          - ghc: '9.10'
+          - ghc: 9.12
             os: macos-13
-          - ghc: '9.10'
+          - ghc: 9.12
             os: macos-14
-          - ghc: 9.6
-            os: ubuntu-22.04
           - ghc: 9.8
-            os: ubuntu-22.04
+            os: ubuntu-24.04
           - ghc: '9.10'
-            os: ubuntu-22.04
-          - ghc: '9.10'
+            os: ubuntu-24.04
+          - ghc: 9.12
+            os: ubuntu-24.04
+          - ghc: 9.12
             os: windows-2022
   cabal:
     name: Cabal
@@ -85,7 +86,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: flow-${{ github.sha }}-ubuntu-22.04-9.10
+          name: flow-${{ github.sha }}-ubuntu-24.04-9.12
       - run: tar --extract --file artifact.tar --verbose
       - uses: softprops/action-gh-release@v2
         with:
