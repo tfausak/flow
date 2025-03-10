@@ -27,9 +27,9 @@
 --
 -- So instead of ('Prelude.$'), I propose ('<|'). It is a pipe, which anyone
 -- who has touched a Unix system should be familiar with. And it points in the
--- direction it sends arguments along. Similarly, replace ('Prelude.&') with
--- ('|>'). And for composition, ('<.') replaces ('Prelude..'). I would have
--- preferred @<<@, but its counterpart @>>@ is taken by Haskell's syntax.
+-- direction it sends arguments along. Similarly, replace ('Data.Function.&')
+-- with ('|>'). And for composition, ('<.') replaces ('Prelude..'). I would
+-- have preferred @<<@, but its counterpart @>>@ is taken by Haskell's syntax.
 -- So-called "backwards" composition is normally expressed with
 -- ('Control.Category.>>>'), which Flow provides as ('.>').
 module Flow
@@ -50,7 +50,7 @@ module Flow
   )
 where
 
-import Prelude (seq)
+import qualified Prelude
 
 -- | Left-associative 'apply' operator. Read as "apply forward" or "pipe into".
 -- Use this to create long chains of computation that suggest which direction
@@ -59,7 +59,7 @@ import Prelude (seq)
 -- >>> 3 |> succ |> recip |> negate
 -- -0.25
 --
--- Or use it anywhere you would use ('Prelude.&').
+-- Or use it anywhere you would use ('Data.Function.&').
 --
 -- prop> \ x -> (x |> f) == f x
 --
@@ -67,7 +67,7 @@ import Prelude (seq)
 infixl 0 |>
 
 (|>) :: a -> (a -> b) -> b
-x |> f = apply x f
+(|>) = Prelude.flip (<|)
 
 -- | Right-associative 'apply' operator. Read as "apply backward" or "pipe
 -- from". Use this to create long chains of computation that suggest which
@@ -91,7 +91,7 @@ x |> f = apply x f
 infixr 0 <|
 
 (<|) :: (a -> b) -> a -> b
-f <| x = apply x f
+(<|) = Prelude.id
 
 -- | Function application. This function usually isn't necessary, but it can be
 -- more readable than some alternatives when used with higher-order functions
@@ -111,7 +111,7 @@ f <| x = apply x f
 --
 -- prop> \ x -> apply x f == f x
 apply :: a -> (a -> b) -> b
-apply x f = f x
+apply = (|>)
 
 -- | Left-associative 'compose' operator. Read as "compose forward" or "and
 -- then". Use this to create long chains of computation that suggest which
@@ -129,7 +129,7 @@ apply x f = f x
 infixl 9 .>
 
 (.>) :: (a -> b) -> (b -> c) -> (a -> c)
-f .> g = compose f g
+(.>) = Prelude.flip (<.)
 
 -- | Right-associative 'compose' operator. Read as "compose backward" or "but
 -- first". Use this to create long chains of computation that suggest which
@@ -154,7 +154,7 @@ f .> g = compose f g
 infixr 9 <.
 
 (<.) :: (b -> c) -> (a -> b) -> (a -> c)
-g <. f = compose f g
+(<.) = (Prelude..)
 
 -- | Function composition. This function usually isn't necessary, but it can be
 -- more readable than some alternatives when used with higher-order functions
@@ -175,7 +175,7 @@ g <. f = compose f g
 --
 -- prop> \ x -> compose f g x == g (f x)
 compose :: (a -> b) -> (b -> c) -> (a -> c)
-compose f g x = g (f x)
+compose = (.>)
 
 -- | Left-associative 'apply'' operator. Read as "strict apply forward" or
 -- "strict pipe into". Use this to create long chains of computation that
@@ -199,7 +199,7 @@ compose f g x = g (f x)
 infixl 0 !>
 
 (!>) :: a -> (a -> b) -> b
-x !> f = apply' x f
+(!>) = Prelude.flip (<!)
 
 -- | Right-associative 'apply'' operator. Read as "strict apply backward" or
 -- "strict pipe from". Use this to create long chains of computation that
@@ -208,6 +208,8 @@ x !> f = apply' x f
 --
 -- >>> print <! negate <! recip <! succ <! 3
 -- -0.25
+--
+-- Or use it anywhere you would use ('Prelude.$!').
 --
 -- The difference between this and ('<|') is that this evaluates its argument
 -- before passing it to the function.
@@ -230,7 +232,7 @@ x !> f = apply' x f
 infixr 0 <!
 
 (<!) :: (a -> b) -> a -> b
-f <! x = apply' x f
+(<!) = (Prelude.$!)
 
 -- | Strict function application. This function usually isn't necessary, but it
 -- can be more readable than some alternatives when used with higher-order
@@ -259,4 +261,4 @@ f <! x = apply' x f
 --
 -- prop> \ x -> apply' x f == seq x (f x)
 apply' :: a -> (a -> b) -> b
-apply' x f = seq x (apply x f)
+apply' = (!>)
