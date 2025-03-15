@@ -66,8 +66,9 @@ import qualified Prelude
 -- prop> \ x -> (x |> f |> g) == g (f x)
 infixl 0 |>
 
+{-# INLINE (|>) #-}
 (|>) :: a -> (a -> b) -> b
-(|>) = Prelude.flip (<|)
+(|>) = apply
 
 -- | Right-associative 'apply' operator. Read as "apply backward" or "pipe
 -- from". Use this to create long chains of computation that suggest which
@@ -90,8 +91,9 @@ infixl 0 |>
 -- prop> \ x -> (g <| f <| x) == g (f x)
 infixr 0 <|
 
+{-# INLINE (<|) #-}
 (<|) :: (a -> b) -> a -> b
-(<|) = Prelude.id
+(<|) f = f
 
 -- | Function application. This function usually isn't necessary, but it can be
 -- more readable than some alternatives when used with higher-order functions
@@ -110,8 +112,9 @@ infixr 0 <|
 -- [3.0,0.5,-2.0]
 --
 -- prop> \ x -> apply x f == f x
+{-# INLINE apply #-}
 apply :: a -> (a -> b) -> b
-apply = (|>)
+apply x f = f x
 
 -- | Left-associative 'compose' operator. Read as "compose forward" or "and
 -- then". Use this to create long chains of computation that suggest which
@@ -128,8 +131,9 @@ apply = (|>)
 -- prop> \ x -> (f .> g .> h) x == h (g (f x))
 infixl 9 .>
 
+{-# INLINE (.>) #-}
 (.>) :: (a -> b) -> (b -> c) -> (a -> c)
-(.>) = Prelude.flip (<.)
+f .> g = compose f g
 
 -- | Right-associative 'compose' operator. Read as "compose backward" or "but
 -- first". Use this to create long chains of computation that suggest which
@@ -153,8 +157,9 @@ infixl 9 .>
 -- prop> \ x -> (h <. g <. f) x == h (g (f x))
 infixr 9 <.
 
+{-# INLINE (<.) #-}
 (<.) :: (b -> c) -> (a -> b) -> (a -> c)
-(<.) = (Prelude..)
+g <. f = compose f g
 
 -- | Function composition. This function usually isn't necessary, but it can be
 -- more readable than some alternatives when used with higher-order functions
@@ -174,8 +179,9 @@ infixr 9 <.
 -- [0.25,-4.0]
 --
 -- prop> \ x -> compose f g x == g (f x)
+{-# INLINE compose #-}
 compose :: (a -> b) -> (b -> c) -> (a -> c)
-compose = (.>)
+compose f g = \x -> g (f x)
 
 -- | Left-associative 'apply'' operator. Read as "strict apply forward" or
 -- "strict pipe into". Use this to create long chains of computation that
@@ -198,8 +204,9 @@ compose = (.>)
 -- prop> \ x -> (x !> f !> g) == let y = seq x (f x) in seq y (g y)
 infixl 0 !>
 
+{-# INLINE (!>) #-}
 (!>) :: a -> (a -> b) -> b
-(!>) = Prelude.flip (<!)
+(!>) = \x f -> f <! x
 
 -- | Right-associative 'apply'' operator. Read as "strict apply backward" or
 -- "strict pipe from". Use this to create long chains of computation that
@@ -231,6 +238,7 @@ infixl 0 !>
 -- prop> \ x -> (g <! f <! x) == let y = seq x (f x) in seq y (g y)
 infixr 0 <!
 
+{-# INLINE (<!) #-}
 (<!) :: (a -> b) -> a -> b
 (<!) = (Prelude.$!)
 
@@ -260,5 +268,6 @@ infixr 0 <!
 -- [3.0,0.5,-2.0]
 --
 -- prop> \ x -> apply' x f == seq x (f x)
+{-# INLINE apply' #-}
 apply' :: a -> (a -> b) -> b
 apply' = (!>)
