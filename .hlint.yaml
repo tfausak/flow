@@ -13,6 +13,16 @@
   },
   {
     "ignore": {
+      "name": "Avoid lambda"
+    }
+  },
+  {
+    "ignore": {
+      "name": "Redundant lambda"
+    }
+  },
+  {
+    "ignore": {
       "name": "Use lambda-case"
     }
   },
