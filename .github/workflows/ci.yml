@@ -93,7 +93,7 @@ jobs:
         with:
           files: artifact/flow-${{ github.event.release.tag_name }}.tar.gz
       - run: cabal upload --publish --username '${{ secrets.HACKAGE_USERNAME }}' --password '${{ secrets.HACKAGE_PASSWORD }}' artifact/flow-${{ github.event.release.tag_name }}.tar.gz
-      - run: cabal --http-transport=plain-http upload --documentation --publish --username '${{ secrets.HACKAGE_USERNAME }}' --password '${{ secrets.HACKAGE_PASSWORD }}' flow-${{ github.event.release.tag_name }}-docs.tar.gz
+      - run: cabal --http-transport=plain-http upload --documentation --publish --username '${{ secrets.HACKAGE_USERNAME }}' --password '${{ secrets.HACKAGE_PASSWORD }}' artifact/flow-${{ github.event.release.tag_name }}-docs.tar.gz
 name: CI
 on:
   pull_request:
