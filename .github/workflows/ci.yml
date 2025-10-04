@@ -38,8 +38,6 @@ jobs:
       matrix:
         include:
           - ghc: 9.12
-            os: macos-13
-          - ghc: 9.12
             os: macos-14
           - ghc: 9.8
             os: ubuntu-24.04
