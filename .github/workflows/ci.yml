@@ -83,7 +83,7 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           name: flow-${{ github.sha }}-ubuntu-24.04-9.12
       - run: tar --extract --file artifact.tar --verbose
