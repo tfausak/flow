@@ -45,6 +45,8 @@ jobs:
             os: ubuntu-24.04
           - ghc: 9.12
             os: ubuntu-24.04
+          - ghc: 9.14
+            os: ubuntu-24.04
           - ghc: 9.12
             os: windows-2022
   cabal:
