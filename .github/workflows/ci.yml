@@ -58,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: tfausak/cabal-gild-setup-action@v2
+      - uses: tfausak/cabal-gild-setup-action@1639b48019c070533ec2fb52cb802100b7e357a5
       - run: cabal-gild --input flow.cabal --mode check
   hlint:
     name: HLint
