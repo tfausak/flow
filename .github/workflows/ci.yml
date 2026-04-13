@@ -87,7 +87,7 @@ jobs:
         with:
           name: flow-${{ github.sha }}-ubuntu-24.04-9.12
       - run: tar --extract --file artifact.tar --verbose
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           files: artifact/flow-${{ github.event.release.tag_name }}.tar.gz
       - run: cabal upload --publish --username '${{ secrets.HACKAGE_USERNAME }}' --password '${{ secrets.HACKAGE_PASSWORD }}' artifact/flow-${{ github.event.release.tag_name }}.tar.gz
