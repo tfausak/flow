@@ -74,7 +74,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: haskell-actions/run-ormolu@v17
+      - uses: haskell-actions/run-ormolu@v19
   release:
     if: ${{ github.event_name == 'release' }}
     name: Release
