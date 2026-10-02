@@ -33,7 +33,7 @@ jobs:
         with:
           name: flow-${{ github.sha }}-${{ matrix.os }}-${{ matrix.ghc }}
           path: artifact.tar
-      - run: cabal run -- flow-test-suite --randomize --strict
+      - run: cabal run flow-test-suite -- --randomize --strict
     strategy:
       matrix:
         include:
