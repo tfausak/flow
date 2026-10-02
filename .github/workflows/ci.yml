@@ -33,7 +33,7 @@ jobs:
         with:
           name: flow-${{ github.sha }}-${{ matrix.os }}-${{ matrix.ghc }}
           path: artifact.tar
-      - run: cabal run -- flow-test-suite --randomize --strict
+      - run: cabal run flow-test-suite -- --randomize --strict
     strategy:
       matrix:
         include:
@@ -74,7 +74,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: haskell-actions/run-ormolu@v21
+      - uses: tfausak/ormolu-setup-action@v1
+      - run: git ls-files '*.hs' | xargs ormolu --mode check
   release:
     if: ${{ github.event_name == 'release' }}
     name: Release
